@@ -1,0 +1,284 @@
+2012/04/29 10:23:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "about".' in D:\xampp\htdocs\tasks\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CController.php(271): CController->missingAction('about')
+#1 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(276): CController->run('about')
+#2 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('site/about')
+#3 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tasks/site/about
+---
+2012/04/29 10:38:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/index".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('site/index')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/site/index
+HTTP_REFERER=http://localhost/tasks/site/page?view=about
+---
+2012/04/29 10:41:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/index".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('site/index')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/site/index
+HTTP_REFERER=http://localhost/tasks/site/page?view=about
+---
+2012/04/29 10:41:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/index".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('site/index')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/site/index
+HTTP_REFERER=http://localhost/tasks/site/page?view=about
+---
+2012/04/29 10:41:12 [error] [exception.CException] exception 'CException' with message 'TasksController cannot find the requested view "index".' in D:\xampp\htdocs\tasks\framework\web\CController.php:879
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CController.php(783): CController->renderPartial('index', NULL, true)
+#1 D:\xampp\htdocs\tasks\protected\controllers\TasksController.php(9): CController->render('index')
+#2 D:\xampp\htdocs\tasks\framework\web\actions\CInlineAction.php(50): TasksController->actionIndex()
+#3 D:\xampp\htdocs\tasks\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 D:\xampp\htdocs\tasks\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 D:\xampp\htdocs\tasks\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(276): CController->run('')
+#7 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('')
+#8 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/tasks/
+---
+2012/04/29 10:41:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/index".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('site/index')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/site/index
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:42:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/index".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('site/index')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/site/index
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:43:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/index".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('site/index')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/site/index
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:43:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/index".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('site/index')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/site/index
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:43:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/index".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('site/index')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/site/index
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:43:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/index".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('site/index')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/site/index
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:45:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/page".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('site/page')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/site/page?view=about
+HTTP_REFERER=http://localhost/tasks/tasks/index
+---
+2012/04/29 10:45:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "indexd".' in D:\xampp\htdocs\tasks\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CController.php(271): CController->missingAction('indexd')
+#1 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(276): CController->run('indexd')
+#2 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('tasks/indexd')
+#3 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tasks/tasks/indexd
+---
+2012/04/29 10:46:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "indexd".' in D:\xampp\htdocs\tasks\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CController.php(271): CController->missingAction('indexd')
+#1 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(276): CController->run('indexd')
+#2 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('tasks/indexd')
+#3 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tasks/tasks/indexd
+---
+2012/04/29 10:46:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "indexd".' in D:\xampp\htdocs\tasks\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CController.php(271): CController->missingAction('indexd')
+#1 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(276): CController->run('indexd')
+#2 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('tasks/indexd')
+#3 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tasks/tasks/indexd
+---
+2012/04/29 10:49:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "indexd".' in D:\xampp\htdocs\tasks\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CController.php(271): CController->missingAction('indexd')
+#1 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(276): CController->run('indexd')
+#2 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('tasks/indexd')
+#3 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tasks/tasks/indexd
+---
+2012/04/29 10:49:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/app.js".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/app.js')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/assets/app.js
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:52:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/app.js".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/app.js')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/assets/app.js
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:53:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/app.js".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/app.js')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/assets/app.js
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:53:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/app.js".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/app.js')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/assets/app.js
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:56:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/app.js".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/app.js')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/assets/app.js
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:57:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/app.js".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/app.js')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/assets/app.js
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:57:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ff".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('ff')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/ff
+---
+2012/04/29 10:57:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/app.js".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/app.js')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/assets/app.js
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 10:58:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ff".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('ff')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/ff
+---
+2012/04/29 11:00:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ff".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('ff')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/ff
+---
+2012/04/29 11:00:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ff".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('ff')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/ff
+---
+2012/04/29 11:01:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ff".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('ff')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/ff
+---
+2012/04/29 11:01:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/app.js".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/app.js')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/assets/app.js
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 11:14:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/app.js".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/app.js')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/assets/app.js
+HTTP_REFERER=http://localhost/tasks/
+---
+2012/04/29 11:27:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "f".' in D:\xampp\htdocs\tasks\framework\web\CWebApplication.php:280
+Stack trace:
+#0 D:\xampp\htdocs\tasks\framework\web\CWebApplication.php(135): CWebApplication->runController('f')
+#1 D:\xampp\htdocs\tasks\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\tasks\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tasks/f
+---

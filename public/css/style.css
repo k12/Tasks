@@ -1,0 +1,19 @@
+body {
+    background-color: #064167;
+}
+
+.add-icon {
+    background-image: url(../images/icons/add.gif);
+}
+
+.delete-icon {
+    background-image: url(../images/icons/delete.gif);
+}
+
+.error {
+    color: #fff;
+    margin: 15px;
+    padding: 15px;
+    border: 1px solid #088999;
+    background-color: #062f4d;
+}

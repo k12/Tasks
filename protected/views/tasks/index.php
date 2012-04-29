@@ -1,0 +1,1 @@
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/assets/tasks/app.js"></script>
