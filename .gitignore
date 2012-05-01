@@ -1,4 +1,4 @@
 .idea/
-assets/
 !assets/tasks/
+assets/
 *.log
