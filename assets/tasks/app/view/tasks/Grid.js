@@ -3,7 +3,6 @@ Ext.define('Tasks.view.tasks.Grid', {
 
     xtype: 'tasksGrid',
 
-    title: 'Tasks',
     multiSelect: true,
     enableColumnHide: false,
 

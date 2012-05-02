@@ -38,7 +38,7 @@ Ext.define('Tasks.view.Viewport', {
 
     buildCenterRegion: function() {
         return {
-            xtype: 'tasksGrid',
+            xtype: 'tasksTabPanel',
             region: 'center'
         }
     },
