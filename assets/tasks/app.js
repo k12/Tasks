@@ -6,7 +6,13 @@ Ext.onReady(function(){
 
     Ext.application({
         name: 'Tasks',
-        appFolder: 'assets/tasks/app'
+        appFolder: 'assets/tasks/app',
+        autoCreateViewport: true,
+
+        controllers: [
+            'Lists',
+            'Tasks'
+        ]
     });
 
 });
