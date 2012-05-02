@@ -2,12 +2,44 @@ body {
     background-color: #064167;
 }
 
-.add-icon {
-    background-image: url(../images/icons/add.gif);
+.column-header-icon .x-column-header-text {
+    display: block;
+    width: 16px;
+    height: 22px;
+    background-repeat: no-repeat;
+    background-position: 0 3px;
 }
 
-.delete-icon {
-    background-image: url(../images/icons/delete.gif);
+.edit-task-icon .x-column-header-inner, .delete-icon .x-column-header-inner {
+    padding: 0 4px;
+}
+
+.priority-icon .x-column-header-inner {
+    padding: 0 8px;
+}
+
+.edit-task-icon .x-column-header-text {
+    background-image: url(../images/icons/edit.png);
+}
+
+.delete-icon .x-column-header-text {
+    background-image: url(../images/icons/delete.png);
+}
+
+.priority-icon .x-column-header-text {
+    background-image: url(../images/icons/priority.png);
+}
+
+.priority-high-icon {
+    background-image: url(../images/icons/priority_high.png);
+}
+
+.priority-normal-icon {
+    background-image: url(../images/icons/priority_normal.png);
+}
+
+.priority-low-icon {
+    background-image: url(../images/icons/priority_low.png);
 }
 
 .error {
