@@ -4,7 +4,7 @@ Ext.define('Tasks.model.Task', {
     fields: [
         {name: 'id',        type: 'int'},
         {name: 'title',     type: 'string'},
-        {name: 'dueDate',   type: 'date'},
+        {name: 'dueDate',   type: 'date',   dateFormat: 'Y-m-d'},
         {name: 'priority',  type: 'string'},
         {name: 'note',      type: 'string'}
     ],

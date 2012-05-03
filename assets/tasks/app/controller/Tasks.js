@@ -10,9 +10,19 @@ Ext.define('Tasks.controller.Tasks', {
         'tasks.Details'
     ],
 
+    refs: [
+        {
+            ref: 'detailsPanel',
+            selector: 'detailsPanel'
+        }
+    ],
+
     init: function() {
         this.control(
             {
+                'viewport tasksGrid dataview': {
+                    itemclick: this.showDetails
+                },
                 'tasksGrid': {
                     itemmouseenter: this.showActions,
                     itemmouseleave: this.hideActions,
@@ -26,6 +36,10 @@ Ext.define('Tasks.controller.Tasks', {
         if (cellIndex == 2) {
             this.changePriority(record);
         }
+    },
+
+    showDetails : function(grid, record) {
+        this.getDetailsPanel().updateDetails(record.data);
     },
 
     showActions: function(view, task, node, rowIndex, e) {
@@ -45,7 +59,7 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     changePriority: function(record) {
-        var switchMap = { 'none': 'low', 'low': 'normal', 'normal': 'high', 'high': 'none' };
+        var switchMap = { 'None': 'Low', 'Low': 'Normal', 'Normal': 'High', 'High': 'None' };
 
         record.set('priority', switchMap[record.data['priority']]);
     }
