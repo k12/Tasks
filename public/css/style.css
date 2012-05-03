@@ -2,6 +2,10 @@ body {
     background-color: #064167;
 }
 
+.x-action-col-icon {
+    cursor: pointer;
+}
+
 .column-header-icon .x-column-header-text {
     display: block;
     width: 16px;
