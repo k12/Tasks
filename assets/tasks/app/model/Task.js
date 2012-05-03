@@ -2,9 +2,10 @@ Ext.define('Tasks.model.Task', {
     extend: 'Ext.data.Model',
 
     fields: [
-        {name: 'id',       type: 'int'},
-        {name: 'title',    type: 'string'},
-        {name: 'dueDate',  type: 'date'}
+        {name: 'id',        type: 'int'},
+        {name: 'title',     type: 'string'},
+        {name: 'dueDate',   type: 'date'},
+        {name: 'priority',  type: 'string'}
     ],
 
     proxy: {
