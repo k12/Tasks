@@ -26,23 +26,17 @@ Ext.define('Tasks.controller.Tasks', {
                 'tasksGrid': {
                     itemmouseenter: this.showActions,
                     itemmouseleave: this.hideActions,
-                    cellclick: this.onCellClick
+                    onPriorityIconClick: this.onPriorityIconClick
                 }
             }
         );
     },
 
-    onCellClick: function(grid, td, cellIndex, record) {
-        if (cellIndex == 2) {
-            this.changePriority(record);
-        }
-    },
-
-    showDetails : function(grid, record) {
+    showDetails : function(gridView, record) {
         this.getDetailsPanel().updateDetails(record.data);
     },
 
-    showActions: function(view, task, node, rowIndex, e) {
+    showActions: function(gridView, record, node, rowIndex, e) {
         var icons = Ext.DomQuery.select('.can-be-hidden', node);
 
         Ext.each(icons, function(icon){
@@ -50,12 +44,16 @@ Ext.define('Tasks.controller.Tasks', {
         });
     },
 
-    hideActions: function(view, task, node, rowIndex, e) {
+    hideActions: function(gridView, record, node, rowIndex, e) {
         var icons = Ext.DomQuery.select('.can-be-hidden', node);
 
         Ext.each(icons, function(icon){
                 Ext.get(icon).addCls('x-hidden');
         });
+    },
+
+    onPriorityIconClick: function(gridView, rowIndex) {
+        this.changePriority(this.getTasksStore().getAt(rowIndex));
     },
 
     changePriority: function(record) {
