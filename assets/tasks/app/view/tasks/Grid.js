@@ -23,6 +23,12 @@ Ext.define('Tasks.view.tasks.Grid', {
         };
 
         this.callParent();
+
+        this.addEvents(
+            'onPriorityIconClick',
+            'onEditIconClick',
+            'onDeleteIconClick'
+        )
     },
 
     buildTitleColumn: function() {
@@ -44,11 +50,18 @@ Ext.define('Tasks.view.tasks.Grid', {
 
     buildPriorityColumn: function() {
         return {
+            xtype: 'actioncolumn',
             dataIndex: 'priority',
             width: 24,
             sortable: false,
+            align: 'center',
             cls: 'column-header-icon priority-icon',
-            renderer: this.renderPriorityColumn
+            handler: Ext.bind(this.onPriorityIconClick, this),
+            getClass: function(v, metaData, record) {
+                var priority = record.data['priority'].toLowerCase();
+
+                return 'priority-' + priority + '-icon';
+            }
         };
     },
 
@@ -74,9 +87,7 @@ Ext.define('Tasks.view.tasks.Grid', {
         };
     },
 
-    renderPriorityColumn: function(value, metaData, record) {
-        var priority = record.data['priority'].toLowerCase();
-
-        return '<img src="public/images/icons/priority_'+priority+'.png" />';
+    onPriorityIconClick: function(gridView, rowIndex, colIndex, column, e) {
+        this.fireEvent('onPriorityIconClick', gridView, rowIndex, colIndex, column, e);
     }
 });

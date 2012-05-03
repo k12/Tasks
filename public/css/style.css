@@ -16,7 +16,7 @@ body {
     width: 16px;
     height: 22px;
     background-repeat: no-repeat;
-    background-position: 0 3px;
+    background-position: center;
 }
 
 .edit-task-icon .x-column-header-inner, .delete-icon .x-column-header-inner {
@@ -39,6 +39,22 @@ body {
 
 .priority-icon .x-column-header-text {
     background-image: url(../images/icons/priority.png);
+}
+
+.x-action-col-cell img.priority-none-icon {
+    background-image: url(../images/icons/priority_none.png);
+}
+
+.x-action-col-cell img.priority-low-icon {
+    background-image: url(../images/icons/priority_low.png);
+}
+
+.x-action-col-cell img.priority-normal-icon {
+    background-image: url(../images/icons/priority_normal.png);
+}
+
+.x-action-col-cell img.priority-high-icon {
+    background-image: url(../images/icons/priority_high.png);
 }
 
 .priority-none {
