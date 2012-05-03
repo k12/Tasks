@@ -2,8 +2,13 @@ body {
     background-color: #064167;
 }
 
-.x-action-col-icon {
+.x-action-col-cell img
+{
+    width: 16px;
+    height: 16px;
     cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .column-header-icon .x-column-header-text {
@@ -22,10 +27,12 @@ body {
     padding: 0 8px;
 }
 
+.x-action-col-cell img.edit-task-icon,
 .edit-task-icon .x-column-header-text {
     background-image: url(../images/icons/edit.png);
 }
 
+.x-action-col-cell img.delete-icon,
 .delete-icon .x-column-header-text {
     background-image: url(../images/icons/delete.png);
 }

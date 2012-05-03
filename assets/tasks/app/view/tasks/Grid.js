@@ -59,8 +59,7 @@ Ext.define('Tasks.view.tasks.Grid', {
             sortable: false,
             align: 'center',
             cls: 'column-header-icon edit-task-icon',
-            iconCls: 'x-hidden can-be-hidden',
-            icon: 'public/images/icons/edit.png'
+            iconCls: 'x-hidden can-be-hidden edit-task-icon'
         };
     },
 
@@ -71,8 +70,7 @@ Ext.define('Tasks.view.tasks.Grid', {
             sortable: false,
             align: 'center',
             cls: 'column-header-icon delete-icon',
-            iconCls: 'x-hidden can-be-hidden',
-            icon: 'public/images/icons/delete.png'
+            iconCls: 'x-hidden can-be-hidden delete-icon'
         };
     },
 
