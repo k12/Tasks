@@ -34,16 +34,20 @@ body {
     background-image: url(../images/icons/priority.png);
 }
 
-.priority-high-icon {
-    background-image: url(../images/icons/priority_high.png);
+.priority-none {
+    color: #d3d3d3;
 }
 
-.priority-normal-icon {
-    background-image: url(../images/icons/priority_normal.png);
+.priority-low {
+    color: #fff517;
 }
 
-.priority-low-icon {
-    background-image: url(../images/icons/priority_low.png);
+.priority-normal {
+    color: #ff9f17;
+}
+
+.priority-high {
+    color: #d30700;
 }
 
 .error {

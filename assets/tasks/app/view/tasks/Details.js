@@ -8,7 +8,7 @@ Ext.define('Tasks.view.tasks.Details', {
     taskTplMarkup: [
         '<b>Title:</b> {title}<br/><br/>',
         '<b>Due date:</b> {dueDate}<br/>',
-        '<b>Priority:</b> {priority}<br/><br/>',
+        '<b>Priority:</b> <span class="{priorityClass}">{priority}</span><br/><br/>',
         '<b>Note:</b> {note}<br/>'
     ],
 
@@ -22,11 +22,11 @@ Ext.define('Tasks.view.tasks.Details', {
     },
 
     updateDetails: function(data) {
-        var dueDate = data['dueDate']; //save data['dueDate'] to restore it later
+        var tplData = JSON.parse(JSON.stringify(data)); //clone object trick
 
-        data['dueDate'] = Ext.Date.format(dueDate, 'Y-m-d');
-        this.tpl.overwrite(this.body, data);
+        tplData['dueDate'] = Ext.Date.format(data['dueDate'], 'Y-m-d');
+        tplData['priorityClass'] = 'priority-'+data['priority'].toLowerCase();
 
-        data['dueDate'] = dueDate; //restore dueDate
+        this.tpl.overwrite(this.body, tplData);
     }
 });
