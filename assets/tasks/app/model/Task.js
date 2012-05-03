@@ -5,7 +5,8 @@ Ext.define('Tasks.model.Task', {
         {name: 'id',        type: 'int'},
         {name: 'title',     type: 'string'},
         {name: 'dueDate',   type: 'date'},
-        {name: 'priority',  type: 'string'}
+        {name: 'priority',  type: 'string'},
+        {name: 'note',      type: 'string'}
     ],
 
     proxy: {
