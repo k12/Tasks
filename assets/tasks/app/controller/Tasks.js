@@ -43,7 +43,7 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     showActions: function(view, task, node, rowIndex, e) {
-        var icons = Ext.DomQuery.select('.x-action-col-icon', node);
+        var icons = Ext.DomQuery.select('.can-be-hidden', node);
 
         Ext.each(icons, function(icon){
                 Ext.get(icon).removeCls('x-hidden');
@@ -51,7 +51,7 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     hideActions: function(view, task, node, rowIndex, e) {
-        var icons = Ext.DomQuery.select('.x-action-col-icon', node);
+        var icons = Ext.DomQuery.select('.can-be-hidden', node);
 
         Ext.each(icons, function(icon){
                 Ext.get(icon).addCls('x-hidden');
