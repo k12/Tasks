@@ -22,7 +22,7 @@ Ext.define('Tasks.view.tasks.Details', {
     },
 
     updateDetails: function(data) {
-        var tplData = JSON.parse(JSON.stringify(data)); //clone object trick
+        var tplData = Ext.clone(data);
 
         tplData['dueDate'] = Ext.Date.format(data['dueDate'], 'Y-m-d');
         tplData['priorityClass'] = 'priority-'+data['priority'].toLowerCase();
