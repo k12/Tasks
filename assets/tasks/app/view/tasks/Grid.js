@@ -44,13 +44,11 @@ Ext.define('Tasks.view.tasks.Grid', {
 
     buildPriorityColumn: function() {
         return {
-            xtype: 'actioncolumn',
+            dataIndex: 'priority',
             width: 24,
             sortable: false,
-            align: 'center',
             cls: 'column-header-icon priority-icon',
-            icon: 'public/images/icons/priority_normal.png',
-            tooltip: 'Priority: normal'
+            renderer: this.renderPriorityColumn
         };
     },
 
@@ -62,8 +60,7 @@ Ext.define('Tasks.view.tasks.Grid', {
             align: 'center',
             cls: 'column-header-icon edit-task-icon',
             iconCls: 'x-hidden',
-            icon: 'public/images/icons/edit.png',
-            tooltip: 'Edit'
+            icon: 'public/images/icons/edit.png'
         };
     },
 
@@ -75,8 +72,13 @@ Ext.define('Tasks.view.tasks.Grid', {
             align: 'center',
             cls: 'column-header-icon delete-icon',
             iconCls: 'x-hidden',
-            icon: 'public/images/icons/delete.png',
-            tooltip: 'Delete'
+            icon: 'public/images/icons/delete.png'
         };
+    },
+
+    renderPriorityColumn: function(value, metaData, record) {
+        var priority = record.data['priority'].toLowerCase();
+
+        return '<img src="public/images/icons/priority_'+priority+'.png" />';
     }
 });
