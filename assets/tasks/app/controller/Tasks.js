@@ -45,24 +45,8 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     changePriority: function(record) {
-        var priority;
+        var switchMap = { 'none': 'low', 'low': 'normal', 'normal': 'high', 'high': 'none' };
 
-        switch (record.data['priority']) { //TODO: make better solution than switch
-            case 'none':
-                priority = 'low';
-                break;
-            case 'low':
-                priority = 'normal';
-                break;
-            case 'normal':
-                priority = 'high';
-                break;
-            case 'high':
-            default:
-                priority = 'none';
-                break;
-        }
-
-        record.set('priority', priority);
+        record.set('priority', switchMap[record.data['priority']]);
     }
 });
