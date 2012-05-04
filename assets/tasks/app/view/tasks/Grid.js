@@ -27,6 +27,14 @@ Ext.define('Tasks.view.tasks.Grid', {
             ]
         };
 
+        this.plugins = [
+            Ext.create('Ext.grid.plugin.CellEditing', {
+                listeners: {
+                    edit: Ext.bind(this.onCellEdit, this)
+                }
+            })
+        ];
+
         this.callParent();
 
         this.addEvents(
@@ -55,7 +63,11 @@ Ext.define('Tasks.view.tasks.Grid', {
         return {
             header: 'Title',
             dataIndex: 'title',
-            flex: 1
+            flex: 1,
+            editor: {
+                xtype: 'textfield',
+                allowBlank: false
+            }
         };
     },
 
@@ -64,7 +76,11 @@ Ext.define('Tasks.view.tasks.Grid', {
             xtype: 'datecolumn',
             header: 'Due Date',
             dataIndex: 'dueDate',
-            format: 'Y-m-d'
+            format: 'Y-m-d',
+            editor: {
+                xtype:      'datefield',
+                format:     'Y-m-d'
+            }
         };
     },
 
@@ -101,6 +117,10 @@ Ext.define('Tasks.view.tasks.Grid', {
             cls: 'column-header-icon delete-icon',
             iconCls: 'x-hidden can-be-hidden delete-icon'
         };
+    },
+
+    onCellEdit: function(editor, e) {
+        this.fireEvent('onRecordEdit', e.record);
     },
 
     onTaskStateChange: function(column, rowIndex, checked) {
