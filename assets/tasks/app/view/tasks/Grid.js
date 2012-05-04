@@ -3,6 +3,10 @@ Ext.define('Tasks.view.tasks.Grid', {
 
     xtype: 'tasksGrid',
 
+    requires: [
+        'Tasks.ux.CheckColumn'
+    ],
+
     multiSelect: true,
 
     enableColumnHide: false,
@@ -14,6 +18,7 @@ Ext.define('Tasks.view.tasks.Grid', {
     initComponent: function() {
         this.columns = {
             items: [
+                this.buildCheckColumn(),
                 this.buildPriorityColumn(),
                 this.buildTitleColumn(),
                 this.buildDueDateColumn(),
@@ -29,6 +34,17 @@ Ext.define('Tasks.view.tasks.Grid', {
             'onEditIconClick',
             'onDeleteIconClick'
         )
+    },
+
+    buildCheckColumn: function() {
+        return {
+            xtype: 'checkcolumn',
+            dataIndex: 'done',
+            width: 24,
+            sortable: false,
+            align: 'center',
+            cls: 'column-header-icon tasks-done-column-header'
+        }
     },
 
     buildTitleColumn: function() {

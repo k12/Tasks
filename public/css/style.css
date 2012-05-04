@@ -113,6 +113,14 @@ body {
     background: url('../images/icons/check.png') no-repeat 0 -32px;
 }
 
+.tasks-done-column-header .x-column-header-inner {
+    padding: 0 6px;
+}
+
+.tasks-done-column-header .x-column-header-text {
+    background: url('../images/icons/check_header.png') no-repeat 0 7px;
+}
+
 .tasks-completed-task .x-grid-cell-checkcolumn {
     text-decoration: none;
 }
