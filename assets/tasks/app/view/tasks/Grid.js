@@ -34,7 +34,7 @@ Ext.define('Tasks.view.tasks.Grid', {
             'onPriorityIconClick',
             'onEditIconClick',
             'onDeleteIconClick'
-        )
+        );
     },
 
     buildCheckColumn: function() {
