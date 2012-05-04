@@ -12,6 +12,10 @@ Ext.define('Tasks.controller.Tasks', {
 
     refs: [
         {
+            ref: 'tasksGrid',
+            selector: 'tasksGrid'
+        },
+        {
             ref: 'detailsPanel',
             selector: 'detailsPanel'
         }
@@ -26,13 +30,14 @@ Ext.define('Tasks.controller.Tasks', {
                 'tasksGrid': {
                     itemmouseenter: this.showActions,
                     itemmouseleave: this.hideActions,
-                    onPriorityIconClick: this.onPriorityIconClick
+                    onPriorityIconClick: this.onPriorityIconClick,
+                    onRecordEdit: this.update
                 }
             }
         );
     },
 
-    showDetails : function(gridView, record) {
+    showDetails: function(gridView, record) {
         this.getDetailsPanel().updateDetails(record.data);
     },
 
@@ -40,7 +45,7 @@ Ext.define('Tasks.controller.Tasks', {
         var icons = Ext.DomQuery.select('.can-be-hidden', node);
 
         Ext.each(icons, function(icon){
-                Ext.get(icon).removeCls('x-hidden');
+            Ext.get(icon).removeCls('x-hidden');
         });
     },
 
@@ -48,7 +53,7 @@ Ext.define('Tasks.controller.Tasks', {
         var icons = Ext.DomQuery.select('.can-be-hidden', node);
 
         Ext.each(icons, function(icon){
-                Ext.get(icon).addCls('x-hidden');
+            Ext.get(icon).addCls('x-hidden');
         });
     },
 
@@ -60,5 +65,10 @@ Ext.define('Tasks.controller.Tasks', {
         var switchMap = { 'None': 'Low', 'Low': 'Normal', 'Normal': 'High', 'High': 'None' };
 
         record.set('priority', switchMap[record.data['priority']]);
+    },
+
+    update: function(record) {
+        console.log('update called');
+        //TODO update task via server side
     }
 });

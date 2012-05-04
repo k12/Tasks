@@ -30,6 +30,7 @@ Ext.define('Tasks.view.tasks.Grid', {
         this.callParent();
 
         this.addEvents(
+            'onTaskStateChange',
             'onPriorityIconClick',
             'onEditIconClick',
             'onDeleteIconClick'
@@ -43,7 +44,10 @@ Ext.define('Tasks.view.tasks.Grid', {
             width: 24,
             sortable: false,
             align: 'center',
-            cls: 'column-header-icon tasks-done-column-header'
+            cls: 'column-header-icon tasks-done-column-header',
+            listeners: {
+                'checkchange': Ext.bind(this.onTaskStateChange, this)
+            }
         }
     },
 
@@ -101,6 +105,10 @@ Ext.define('Tasks.view.tasks.Grid', {
             cls: 'column-header-icon delete-icon',
             iconCls: 'x-hidden can-be-hidden delete-icon'
         };
+    },
+
+    onTaskStateChange: function(column, rowIndex, checked) {
+        this.fireEvent('onRecordEdit', this.store.getAt(rowIndex));
     },
 
     onPriorityIconClick: function(gridView, rowIndex, colIndex, column, e) {
