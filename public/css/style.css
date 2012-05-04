@@ -80,3 +80,39 @@ body {
     border: 1px solid #088999;
     background-color: #062f4d;
 }
+
+/*
+ * CheckColumn styles
+ */
+.x-grid-cell-checkcolumn .x-grid-cell-inner {
+    line-height: 0;
+    padding: 2px 4px;
+}
+
+.x-grid-with-row-lines .x-grid-cell-checkcolumn .x-grid-cell-inner {
+    padding-top: 1px;
+}
+
+.x-grid-checkheader {
+    height: 16px;
+    width: 16px;
+}
+
+.x-grid-checkheader-inner {
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    background: url('../images/icons/check.png') no-repeat 1px 1px;
+}
+
+.x-grid-checkheader-checked .x-grid-checkheader-inner {
+    background-position: -1px -16px;
+}
+
+.x-grid-checkheader-over {
+    background: url('../images/icons/check.png') no-repeat 0 -32px;
+}
+
+.tasks-completed-task .x-grid-cell-checkcolumn {
+    text-decoration: none;
+}
