@@ -77,11 +77,7 @@ Ext.define('Tasks.view.tasks.Grid', {
             align: 'center',
             cls: 'column-header-icon priority-icon',
             handler: Ext.bind(this.onPriorityIconClick, this),
-            getClass: function(v, metaData, record) {
-                var priority = record.data['priority'].toLowerCase();
-
-                return 'priority-' + priority + '-icon';
-            }
+            getClass: this.getPriorityColumnClass
         };
     },
 
@@ -113,5 +109,11 @@ Ext.define('Tasks.view.tasks.Grid', {
 
     onPriorityIconClick: function(gridView, rowIndex, colIndex, column, e) {
         this.fireEvent('onPriorityIconClick', gridView, rowIndex, colIndex, column, e);
+    },
+
+    getPriorityColumnClass: function(v, metaData, record) {
+        var priority = record.data['priority'].toLowerCase();
+    
+        return 'priority-' + priority + '-icon';
     }
 });
