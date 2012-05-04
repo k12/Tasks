@@ -68,6 +68,7 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     update: function(record) {
+        this.showDetails(null, record);
         console.log('update called');
         //TODO update task via server side
     }
