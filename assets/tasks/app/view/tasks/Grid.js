@@ -113,7 +113,7 @@ Ext.define('Tasks.view.tasks.Grid', {
 
     getPriorityColumnClass: function(v, metaData, record) {
         var priority = record.data['priority'].toLowerCase();
-    
+
         return 'priority-' + priority + '-icon';
     }
 });

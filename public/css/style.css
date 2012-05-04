@@ -57,6 +57,9 @@ body {
     background-image: url(../images/icons/priority_high.png);
 }
 
+/*
+ * Task details styles
+ */
 .priority-none {
     color: #d3d3d3;
 }
@@ -73,12 +76,8 @@ body {
     color: #d30700;
 }
 
-.error {
-    color: #fff;
-    margin: 15px;
-    padding: 15px;
-    border: 1px solid #088999;
-    background-color: #062f4d;
+.status-completed {
+    color: #0fc905;
 }
 
 /*
@@ -123,4 +122,15 @@ body {
 
 .tasks-completed-task .x-grid-cell-checkcolumn {
     text-decoration: none;
+}
+
+/*
+ * Other styles
+ */
+.error {
+    color: #fff;
+    margin: 15px;
+    padding: 15px;
+    border: 1px solid #088999;
+    background-color: #062f4d;
 }
