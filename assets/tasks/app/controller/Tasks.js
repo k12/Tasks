@@ -6,6 +6,7 @@ Ext.define('Tasks.controller.Tasks', {
 
     views: [
         'tasks.TabPanel',
+        'tasks.CreateForm',
         'tasks.Grid',
         'tasks.Details'
     ],

@@ -27,6 +27,10 @@ Ext.define('Tasks.view.tasks.Grid', {
             ]
         };
 
+        this.dockedItems = [
+            this.buildCreateTaskForm()
+        ],
+
         this.plugins = [
             Ext.create('Ext.grid.plugin.CellEditing', {
                 listeners: {
@@ -78,8 +82,8 @@ Ext.define('Tasks.view.tasks.Grid', {
             dataIndex: 'dueDate',
             format: 'Y-m-d',
             editor: {
-                xtype:      'datefield',
-                format:     'Y-m-d'
+                xtype: 'datefield',
+                format: 'Y-m-d'
             }
         };
     },
@@ -116,6 +120,17 @@ Ext.define('Tasks.view.tasks.Grid', {
             align: 'center',
             cls: 'column-header-icon delete-icon',
             iconCls: 'x-hidden can-be-hidden delete-icon'
+        };
+    },
+
+    buildCreateTaskForm: function() {
+        return {
+            xtype: 'createForm',
+            dock: 'top',
+            //weight: 101,
+            bodyStyle: {
+                'background-color': '#E4E5E7'
+            }
         };
     },
 
