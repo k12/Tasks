@@ -30,6 +30,7 @@ Ext.define('Tasks.controller.Tasks', {
                 'tasksGrid': {
                     itemmouseenter: this.showActions,
                     itemmouseleave: this.hideActions,
+                    selectionchange: this.toggleButtons,
                     onPriorityIconClick: this.onPriorityIconClick,
                     onRecordEdit: this.update
                 }
@@ -55,6 +56,20 @@ Ext.define('Tasks.controller.Tasks', {
         Ext.each(icons, function(icon){
             Ext.get(icon).addCls('x-hidden');
         });
+    },
+
+    toggleButtons: function(selModel, record) {
+        var editTaskBtn = Ext.getCmp('edit-task-btn'),
+            deleteTaskBtn = Ext.getCmp('delete-task-btn');
+
+        if(record.length === 0) {
+            editTaskBtn.disable();
+            deleteTaskBtn.disable();
+        }
+        else {
+            editTaskBtn.enable();
+            deleteTaskBtn.enable();
+        }
     },
 
     onPriorityIconClick: function(gridView, rowIndex) {
