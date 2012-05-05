@@ -28,14 +28,21 @@ body {
 }
 
 .x-action-col-cell img.edit-task-icon,
+.edit-tb-icon,
 .edit-task-icon .x-column-header-text {
     background-image: url(../images/icons/edit.png);
 }
 
 .x-action-col-cell img.delete-icon,
+.delete-tb-icon,
 .delete-icon .x-column-header-text {
     background-image: url(../images/icons/delete.png);
 }
+
+.create-icon {
+    background-image: url(../images/icons/create.png);
+}
+
 
 .priority-icon .x-column-header-text {
     background-image: url(../images/icons/priority.png);
