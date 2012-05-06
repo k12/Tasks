@@ -5,7 +5,7 @@ Ext.define('Tasks.model.Task', {
         {name: 'id',        type: 'int'},
         {name: 'title',     type: 'string'},
         {name: 'dueDate',   type: 'date',       dateFormat: 'Y-m-d'},
-        {name: 'priority',  type: 'string'},
+        {name: 'priority',  type: 'string',     defaultValue: 'None'},
         {name: 'note',      type: 'string'},
         {name: 'done',      type: 'boolean',    defaultValue: false}
     ],
