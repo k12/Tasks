@@ -30,7 +30,9 @@ Ext.define('Tasks.view.tasks.CreateForm', {
             xtype: 'textfield',
             name: 'title',
             flex: 1,
-            emptyText: 'What to do, sir?'
+            emptyText: 'What to do, sir?',
+            allowBlank: false,
+            validateOnBlur: false
         }
     },
 

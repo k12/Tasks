@@ -17,6 +17,10 @@ Ext.define('Tasks.controller.Tasks', {
             selector: 'tasksGrid'
         },
         {
+            ref: 'createForm',
+            selector: 'createForm'
+        },
+        {
             ref: 'detailsPanel',
             selector: 'detailsPanel'
         }
@@ -34,6 +38,9 @@ Ext.define('Tasks.controller.Tasks', {
                     selectionchange: this.toggleButtons,
                     onPriorityIconClick: this.onPriorityIconClick,
                     onRecordEdit: this.update
+                },
+                'createForm textfield': {
+                    specialkey: this.onSpecialKey
                 }
             }
         );
@@ -73,6 +80,12 @@ Ext.define('Tasks.controller.Tasks', {
         }
     },
 
+    onSpecialKey: function(field, e) {
+        if(e.getKey() === e.ENTER) {
+            this.create();
+        }
+    },
+
     onPriorityIconClick: function(gridView, rowIndex) {
         this.changePriority(this.getTasksStore().getAt(rowIndex));
     },
@@ -81,6 +94,19 @@ Ext.define('Tasks.controller.Tasks', {
         var switchMap = { 'None': 'Low', 'Low': 'Normal', 'Normal': 'High', 'High': 'None' };
 
         record.set('priority', switchMap[record.data['priority']]);
+    },
+
+    create: function() {
+        var form = this.getCreateForm().getForm(),
+            titleField = form.findField('title'),
+            taskModel = Ext.create('Tasks.model.Task');
+
+        if (form.isValid())
+        {
+            form.updateRecord(taskModel);
+            this.getTasksStore().add(taskModel);
+            titleField.reset();
+        }
     },
 
     update: function(record) {
