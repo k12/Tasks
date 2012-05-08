@@ -19,9 +19,9 @@ Ext.define('Tasks.view.tasks.Grid', {
         this.columns = {
             items: [
                 this.buildCheckColumn(),
-                this.buildPriorityColumn(),
                 this.buildTitleColumn(),
                 this.buildDueDateColumn(),
+                this.buildPriorityColumn(),
                 this.buildEditTaskColumn(),
                 this.buildDeleteTaskColumn()
             ]
