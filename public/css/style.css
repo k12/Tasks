@@ -28,15 +28,21 @@ body {
 }
 
 .x-action-col-cell img.edit-task-icon,
-.edit-tb-icon,
-.edit-task-icon .x-column-header-text {
+.edit-tb-icon {
     background-image: url(../images/icons/edit.png);
 }
 
+.edit-task-icon .x-column-header-text {
+    background-image: url(../images/icons/edit_gray.png);
+}
+
 .x-action-col-cell img.delete-icon,
-.delete-tb-icon,
-.delete-icon .x-column-header-text {
+.delete-tb-icon, {
     background-image: url(../images/icons/delete.png);
+}
+
+.delete-icon .x-column-header-text {
+    background-image: url(../images/icons/delete_gray.png);
 }
 
 .create-icon {
