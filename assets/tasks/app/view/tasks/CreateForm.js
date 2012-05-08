@@ -40,6 +40,7 @@ Ext.define('Tasks.view.tasks.CreateForm', {
         return {
             xtype: 'datefield',
             name: 'dueDate',
+            width: 167,
             format: 'Y-m-d',
             emptyText: 'Y-m-d'
         }
