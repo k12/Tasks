@@ -47,7 +47,7 @@ Ext.define('Tasks.controller.Tasks', {
                     selectionchange: this.toggleButtons,
                     onPriorityIconClick: this.onPriorityIconClick,
                     onEditIconClick: this.onEditIconClick,
-                    onDeleteIconClick: this.onDeleteClick,
+                    onDeleteIconClick: this.onDeleteIconClick,
                     onRecordEdit: this.update
                 },
                 'createForm textfield': {
@@ -119,7 +119,11 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     onDeleteClick: function() {
-        this.delete(this.getTasksGrid().getSelectionModel().getSelection()[0]);
+        this.delete(this.getTasksGrid().getSelectionModel().getSelection());
+    },
+
+    onDeleteIconClick: function(gridView, rowIndex, colIndex, column, e) {
+        this.delete(this.getTasksStore().getAt(rowIndex));
     },
 
     changePriority: function(record) {
@@ -152,8 +156,19 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     delete: function(record) {
-        console.log('delete called');
-        console.log(record);
+        var me = this;
+
+        Ext.Msg.show({
+            title: 'Confirm',
+            msg: 'Are you sure you want to delete this tasks?',
+            buttons: Ext.Msg.YESNO,
+            fn: function(response) {
+                if(response === 'yes') {
+                    me.getTasksStore().remove(record);
+                }
+            }
+        });
+
 
         //TODO delete task via server side
     }
