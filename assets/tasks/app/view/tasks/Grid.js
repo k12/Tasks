@@ -84,8 +84,7 @@ Ext.define('Tasks.view.tasks.Grid', {
             editor: {
                 xtype: 'datefield',
                 format: 'Y-m-d',
-                emptyText: 'Y-m-d',
-                allowBlank: false
+                emptyText: 'Y-m-d'
             }
         };
     },

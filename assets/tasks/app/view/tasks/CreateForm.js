@@ -42,8 +42,7 @@ Ext.define('Tasks.view.tasks.CreateForm', {
             name: 'dueDate',
             value: new Date(),
             format: 'Y-m-d',
-            emptyText: 'Y-m-d',
-            allowBlank: false
+            emptyText: 'Y-m-d'
         }
     }
 
