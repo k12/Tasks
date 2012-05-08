@@ -29,6 +29,15 @@ Ext.define('Tasks.controller.Tasks', {
     init: function() {
         this.control(
             {
+                '#create-task-btn': {
+                    click: this.onCreateClick
+                },
+                '#edit-task-btn': {
+                    click: this.onEditClick
+                },
+                '#delete-task-btn': {
+                    click: this.onDeleteClick
+                },
                 'viewport tasksGrid dataview': {
                     itemclick: this.showDetails
                 },
@@ -37,6 +46,8 @@ Ext.define('Tasks.controller.Tasks', {
                     itemmouseleave: this.hideActions,
                     selectionchange: this.toggleButtons,
                     onPriorityIconClick: this.onPriorityIconClick,
+                    onEditIconClick: this.onEditIconClick,
+                    onDeleteIconClick: this.onDeleteClick,
                     onRecordEdit: this.update
                 },
                 'createForm textfield': {
@@ -90,6 +101,27 @@ Ext.define('Tasks.controller.Tasks', {
         this.changePriority(this.getTasksStore().getAt(rowIndex));
     },
 
+    onCreateClick: function(button, e) {
+        console.log('create button click');
+        console.log(arguments);
+    },
+
+    onEditClick: function(button, e) {
+        console.log('edit button click called');
+        console.log(arguments);
+        //TODO show edit window
+    },
+
+    onEditIconClick: function(gridView, rowIndex, colIndex, column, e) {
+        console.log('edit icon click called');
+        console.log(arguments);
+        //TODO show edit window
+    },
+
+    onDeleteClick: function() {
+        this.delete(this.getTasksGrid().getSelectionModel().getSelection()[0]);
+    },
+
     changePriority: function(record) {
         var switchMap = { 'None': 'Low', 'Low': 'Normal', 'Normal': 'High', 'High': 'None' };
 
@@ -107,11 +139,22 @@ Ext.define('Tasks.controller.Tasks', {
             this.getTasksStore().add(taskModel);
             titleField.reset();
         }
+
+        //TODO save task via server side
     },
 
     update: function(record) {
         this.showDetails(null, record);
         console.log('update called');
+        console.log(record);
+
         //TODO update task via server side
+    },
+
+    delete: function(record) {
+        console.log('delete called');
+        console.log(record);
+
+        //TODO delete task via server side
     }
 });

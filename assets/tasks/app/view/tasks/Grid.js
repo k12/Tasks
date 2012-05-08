@@ -110,7 +110,8 @@ Ext.define('Tasks.view.tasks.Grid', {
             sortable: false,
             align: 'center',
             cls: 'column-header-icon edit-task-icon',
-            iconCls: 'x-hidden can-be-hidden edit-task-icon'
+            iconCls: 'x-hidden can-be-hidden edit-task-icon',
+            handler: Ext.bind(this.onEditIconClick, this)
         };
     },
 
@@ -121,7 +122,8 @@ Ext.define('Tasks.view.tasks.Grid', {
             sortable: false,
             align: 'center',
             cls: 'column-header-icon delete-icon',
-            iconCls: 'x-hidden can-be-hidden delete-icon'
+            iconCls: 'x-hidden can-be-hidden delete-icon',
+            handler: Ext.bind(this.onDeleteIconClick, this)
         };
     },
 
@@ -146,6 +148,14 @@ Ext.define('Tasks.view.tasks.Grid', {
 
     onPriorityIconClick: function(gridView, rowIndex, colIndex, column, e) {
         this.fireEvent('onPriorityIconClick', gridView, rowIndex, colIndex, column, e);
+    },
+
+    onEditIconClick: function(gridView, rowIndex, colIndex, column, e) {
+        this.fireEvent('onEditIconClick', gridView, rowIndex, colIndex, column, e);
+    },
+
+    onDeleteIconClick: function(gridView, rowIndex, colIndex, column, e) {
+        this.fireEvent('onDeleteIconClick', gridView, rowIndex, colIndex, column, e);
     },
 
     getPriorityColumnClass: function(v, metaData, record) {
