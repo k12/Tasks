@@ -37,7 +37,7 @@ body {
 }
 
 .x-action-col-cell img.delete-icon,
-.delete-tb-icon, {
+.delete-tb-icon {
     background-image: url(../images/icons/delete.png);
 }
 
