@@ -71,15 +71,15 @@ body {
 }
 
 .priority-low {
-    color: #fff517;
+    color: #e5db17;
 }
 
 .priority-normal {
-    color: #ff9f17;
+    color: #0fc905;
 }
 
 .priority-high {
-    color: #d30700;
+    color: #ff0700;
 }
 
 .status-completed {
