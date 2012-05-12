@@ -37,7 +37,8 @@ body {
 }
 
 .x-action-col-cell img.delete-icon,
-.delete-tb-icon {
+.delete-tb-icon,
+.cancel-icon {
     background-image: url(../images/icons/delete.png);
 }
 
@@ -48,6 +49,11 @@ body {
 .create-icon {
     background: url(../images/icons/create.png) no-repeat;
 }
+
+.save-icon {
+    background: url(../images/icons/tick.png) no-repeat;
+}
+
 
 .priority-icon .x-column-header-text {
     background-image: url(../images/icons/priority.png);
