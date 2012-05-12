@@ -128,7 +128,7 @@ Ext.define('Tasks.view.tasks.Grid', {
 
     buildCreateTaskForm: function() {
         return {
-            xtype: 'createForm',
+            xtype: 'simpleCreateForm',
             dock: 'top',
             //weight: 101,
             bodyStyle: {

@@ -15,7 +15,7 @@ Ext.define('Tasks.controller.Tasks', {
 
     views: [
         'tasks.TabPanel',
-        'tasks.CreateForm',
+        'tasks.SimpleCreateForm',
         'tasks.TaskWindow',
         'tasks.Grid',
         'tasks.Details'
@@ -27,8 +27,8 @@ Ext.define('Tasks.controller.Tasks', {
             selector: 'tasksGrid'
         },
         {
-            ref: 'createForm',
-            selector: 'createForm'
+            ref: 'simpleCreateForm',
+            selector: 'simpleCreateForm'
         },
         {
             ref: 'taskWindow',
@@ -66,7 +66,7 @@ Ext.define('Tasks.controller.Tasks', {
                     onDeleteIconClick: this.onDeleteIconClick,
                     onRecordEdit: this.update
                 },
-                'createForm textfield': {
+                'simpleCreateForm textfield': {
                     specialkey: this.onSpecialKey
                 },
                 'taskWindow #save-btn': {
@@ -115,7 +115,7 @@ Ext.define('Tasks.controller.Tasks', {
 
     onSpecialKey: function(field, e) {
         if(e.getKey() === e.ENTER) {
-            this.create();
+            this.simpleCreate();
         }
     },
 
@@ -187,8 +187,8 @@ Ext.define('Tasks.controller.Tasks', {
         this.getTaskWindow().close();
     },
 
-    create: function() {
-        var form = this.getCreateForm().getForm(),
+    simpleCreate: function() {
+        var form = this.getSimpleCreateForm().getForm(),
             titleField = form.findField('title'),
             taskModel = Ext.create('Tasks.model.Task');
 

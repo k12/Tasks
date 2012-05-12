@@ -99,12 +99,12 @@ body {
 }
 
 /*
- * Create task form
+ * Simple create task form
  */
-.create-task-form .x-form-item {
+.simple-create-task-form .x-form-item {
     margin: 3px 3px 3px 2px;
 }
-.create-task-form .create-icon {
+.simple-create-task-form .create-icon {
     background-position: 4px 5px;
 }
 
