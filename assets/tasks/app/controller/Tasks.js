@@ -1,12 +1,22 @@
 Ext.define('Tasks.controller.Tasks', {
     extend: 'Ext.app.Controller',
 
-    models: ['Task'],
-    stores: ['Tasks'],
+    models: [
+        'Task',
+        'User',
+        'Category'
+    ],
+
+    stores: [
+        'Tasks',
+        'Users',
+        'Categories'
+    ],
 
     views: [
         'tasks.TabPanel',
         'tasks.CreateForm',
+        'tasks.TaskWindow',
         'tasks.Grid',
         'tasks.Details'
     ],
@@ -19,6 +29,12 @@ Ext.define('Tasks.controller.Tasks', {
         {
             ref: 'createForm',
             selector: 'createForm'
+        },
+        {
+            ref: 'taskWindow',
+            selector: 'taskWindow',
+            xtype: 'taskWindow',
+            autoCreate: true
         },
         {
             ref: 'detailsPanel',
@@ -52,6 +68,12 @@ Ext.define('Tasks.controller.Tasks', {
                 },
                 'createForm textfield': {
                     specialkey: this.onSpecialKey
+                },
+                'taskWindow #save-btn': {
+                    click: this.onSaveClick
+                },
+                'taskWindow #cancel-btn': {
+                    click: this.onCancelClick
                 }
             }
         );
@@ -97,25 +119,38 @@ Ext.define('Tasks.controller.Tasks', {
         }
     },
 
+    onSaveClick: function(button, e) {
+        var win = this.getTaskWindow(),
+            form = win.down('form').getForm();
+
+        if(form.isValid()) {
+            console.log('saving...');
+        }
+        else {
+            Ext.Msg.alert('Invalid Data', 'Please correct form errors.');
+        }
+    },
+
+    onCancelClick: function(button, e) {
+        this.closeTaskWindow();
+    },
+
     onPriorityIconClick: function(gridView, rowIndex) {
         this.changePriority(this.getTasksStore().getAt(rowIndex));
     },
 
     onCreateClick: function(button, e) {
-        console.log('create button click');
-        console.log(arguments);
+        this.showTaskWindow();
     },
 
     onEditClick: function(button, e) {
-        console.log('edit button click called');
-        console.log(arguments);
-        //TODO show edit window
+        var records = this.getTasksGrid().getSelectionModel().getSelection();
+
+        this.showTaskWindow(records[records.length - 1]);
     },
 
     onEditIconClick: function(gridView, rowIndex, colIndex, column, e) {
-        console.log('edit icon click called');
-        console.log(arguments);
-        //TODO show edit window
+        this.showTaskWindow(gridView.getRecord(gridView.findTargetByEvent(e)))
     },
 
     onDeleteClick: function() {
@@ -130,6 +165,26 @@ Ext.define('Tasks.controller.Tasks', {
         var switchMap = { 'None': 'Low', 'Low': 'Normal', 'Normal': 'High', 'High': 'None' };
 
         record.set('priority', switchMap[record.data['priority']]);
+    },
+
+    showTaskWindow: function(task) {
+        var win = this.getTaskWindow(),
+            form = win.down('form');
+
+        if (task !== undefined) {
+            win.setTitle('Edit Task');
+        }
+        else {
+            task = Ext.create('Tasks.model.Task');
+            win.setTitle('Create Task');
+        }
+
+        form.loadRecord(task);
+        win.show();
+    },
+
+    closeTaskWindow: function() {
+        this.getTaskWindow().close();
     },
 
     create: function() {
