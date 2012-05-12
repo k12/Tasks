@@ -16,13 +16,23 @@ Ext.define('Tasks.model.Task', {
     proxy: {
         type: 'ajax',
         api: {
-            read: 'assets/tasks/data/tasks.json'
+            read: 'tasks/read'
         },
         reader: {
             type: 'json',
             root: 'tasks',
             successProperty: 'success',
             messageProperty: 'message'
+        },
+        listeners: {
+            exception: function(proxy, response, operation){
+                Ext.MessageBox.show({
+                    title: 'REMOTE EXCEPTION',
+                    msg: 'Status Code: ' + response.status + ' ' + response.statusText + '<br /> Error Message: ' + operation.error,
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+            }
         }
     }
 
