@@ -16,6 +16,7 @@ Ext.define('Tasks.model.Task', {
     proxy: {
         type: 'ajax',
         api: {
+            create: 'tasks/create',
             read: 'tasks/read'
         },
         reader: {
@@ -26,9 +27,12 @@ Ext.define('Tasks.model.Task', {
         },
         listeners: {
             exception: function(proxy, response, operation){
+                var error = operation.getError(),
+                    msg = Ext.isObject(error) ? error.status + ' ' + error.statusText : error;
+
                 Ext.MessageBox.show({
                     title: 'REMOTE EXCEPTION',
-                    msg: 'Status Code: ' + response.status + ' ' + response.statusText + '<br /> Error Message: ' + operation.error,
+                    msg: msg,
                     icon: Ext.MessageBox.ERROR,
                     buttons: Ext.Msg.OK
                 });
