@@ -1,0 +1,9 @@
+{
+    success: true,
+    categories: [
+        {id: 1, name: 'Private'},
+        {id: 2, name: 'Company'},
+        {id: 3, name: 'Assigned to me'},
+        {id: 4, name: 'Assigned to others'}
+    ]
+}
