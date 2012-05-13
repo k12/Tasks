@@ -9,7 +9,7 @@ Ext.define('Tasks.model.User', {
     proxy: {
         type: 'ajax',
         api: {
-            read: 'assets/tasks/data/users.json'
+            read: 'users/read'
         },
         reader: {
             type: 'json',

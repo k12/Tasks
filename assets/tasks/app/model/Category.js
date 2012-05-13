@@ -3,13 +3,13 @@ Ext.define('Tasks.model.Category', {
 
     fields: [
         {name: 'id',    type: 'int'},
-        {name: 'name',  type: 'string'}
+        {name: 'category',  type: 'string'}
     ],
 
     proxy: {
         type: 'ajax',
         api: {
-            read: 'assets/tasks/data/categories.json'
+            read: 'categories/read'
         },
         reader: {
             type: 'json',
