@@ -59,6 +59,34 @@ class TasksController extends CController
         echo json_encode($respond);
     }
 
+    public function actionUpdate()
+    {
+        try {
+            $params = $this->getParams();
+
+            $task = Tasks::model()->findByPk($params['id']);
+            $task->attributes = $params;
+
+            if($task->save()) {
+                $respond = array(
+                    'success' => true,
+                    'tasks' => $task->attributes
+                );
+            }
+            else {
+                throw new Exception('Updating task failed!');
+            }
+        }
+        catch (Exception $e) {
+            $respond = array(
+                'success' => false,
+                'message' => $e->getMessage()
+            );
+        }
+
+        echo json_encode($respond);
+    }
+
     public function actionError()
     {
         if ($error = Yii::app()->errorHandler->error) {

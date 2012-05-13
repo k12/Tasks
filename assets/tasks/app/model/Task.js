@@ -17,7 +17,8 @@ Ext.define('Tasks.model.Task', {
         type: 'ajax',
         api: {
             create: 'tasks/create',
-            read: 'tasks/read'
+            read: 'tasks/read',
+            update: 'tasks/update'
         },
         reader: {
             type: 'json',

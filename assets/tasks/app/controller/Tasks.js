@@ -161,10 +161,11 @@ Ext.define('Tasks.controller.Tasks', {
         this.delete(this.getTasksStore().getAt(rowIndex));
     },
 
-    changePriority: function(record) {
+    changePriority: function(task) {
         var switchMap = { 'None': 'Low', 'Low': 'Normal', 'Normal': 'High', 'High': 'None' };
 
-        record.set('priority', switchMap[record.data['priority']]);
+        task.set('priority', switchMap[task.data['priority']]);
+        this.update(task);
     },
 
     showTaskWindow: function(task) {
@@ -228,12 +229,25 @@ Ext.define('Tasks.controller.Tasks', {
         }
     },
 
-    update: function(record) {
-        this.showDetails(null, record);
-        console.log('update called');
-        console.log(record);
+    update: function(task) {
+        var me = this;
 
-        //TODO update task via server side
+        task.save({
+            success: function(task, operation) {
+                me.showDetails(null, task);
+            },
+            failure: function(task, operation) {
+                var error = operation.getError(),
+                    msg = Ext.isObject(error) ? error.status + ' ' + error.statusText : error;
+
+                Ext.MessageBox.show({
+                    title: 'Updating Task Failed',
+                    msg: msg,
+                    icon: Ext.Msg.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+            }
+        });
     },
 
     delete: function(record) {
