@@ -7,7 +7,7 @@ Ext.define('Tasks.model.Task', {
         {name: 'dueDate',       type: 'date',       dateFormat: 'Y-m-d'},
         {name: 'priority',      type: 'string',     defaultValue: 'None'},
         {name: 'note',          type: 'string'},
-        {name: 'done',          type: 'int'},
+        {name: 'done',          type: 'boolean',    defaultValue: false},
         {name: 'categoryId',    type: 'auto',       defaultValue: null}, //FIXIT: type should be int (default null for int doesnt work)
         {name: 'assignedToId',  type: 'auto',       defaultValue: null},
         {name: 'assignedById',  type: 'auto',       defaultValue: null}

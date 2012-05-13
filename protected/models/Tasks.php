@@ -94,4 +94,15 @@ class Tasks extends CActiveRecord
             'criteria' => $criteria,
         ));
     }
+
+    //FIXIT: ugly solution for variable types compatibility between exts and yii
+    public function onBeforeValidate($event)
+    {
+        $this->done = (int)$this->done;
+    }
+
+    public function onAfterValidate($event)
+    {
+        $this->done = (boolean)$this->done;
+    }
 }
