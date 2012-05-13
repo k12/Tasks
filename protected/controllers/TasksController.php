@@ -64,7 +64,11 @@ class TasksController extends CController
         try {
             $params = $this->getParams();
 
-            $task = Tasks::model()->findByPk($params['id']);
+            $task = Tasks::model()->findByPk('1000');
+            if (!$task) {
+                throw new Exception('Specified task not found!');
+            }
+
             $task->attributes = $params;
 
             if($task->save()) {
