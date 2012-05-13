@@ -120,7 +120,7 @@ Ext.define('Tasks.view.tasks.TaskWindow', {
             fieldLabel: 'Category',
             labelWidth: 60,
             flex: 1,
-            displayField: 'name',
+            displayField: 'category',
             store: Ext.create('Tasks.store.Categories')
         }
     },
