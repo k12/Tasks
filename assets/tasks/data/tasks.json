@@ -1,7 +1,0 @@
-{
-    success: true,
-    tasks: [
-        {id: 1, title: 'Task 01',   dueDate: '2012-05-02',  priority: 'Normal', done: false,    note: 'Lorem ipsum',        categoryId: 1,  assignedToId: 1, assignedById: 2},
-        {id: 2, title: 'Task 02',   dueDate: '2012-06-05',  priority: 'High',   done: true,     note: 'Lorem ipsum lorem',  categoryId: 2,  assignedToId: 2, assignedById: 1}
-    ]
-}
