@@ -31,6 +31,10 @@ Ext.define('Tasks.view.tasks.Grid', {
             this.buildCreateTaskForm()
         ],
 
+        this.viewConfig = {
+            getRowClass: Ext.bind(this.getRowClass, this)
+        },
+
         this.plugins = [
             Ext.create('Ext.grid.plugin.CellEditing', {
                 listeners: {
@@ -161,5 +165,16 @@ Ext.define('Tasks.view.tasks.Grid', {
         var priority = record.data['priority'].toLowerCase();
 
         return 'priority-' + priority + '-icon';
+    },
+
+    getRowClass: function(record, rowIndex, rowParams, store){
+        var dueDate = record.get('dueDate');
+
+        if (record.get('done')) {
+            return 'tasks-completed-task';
+        }
+        else if (dueDate && (dueDate < Ext.Date.clearTime(new Date()))) {
+            return 'tasks-overdue-task';
+        }
     }
 });

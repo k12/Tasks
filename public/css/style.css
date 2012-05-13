@@ -148,8 +148,13 @@ body {
     background: url('../images/icons/check_header.png') no-repeat 0 7px;
 }
 
-.tasks-completed-task .x-grid-cell-checkcolumn {
-    text-decoration: none;
+.tasks-completed-task .x-grid-cell {
+    text-decoration: line-through;
+    color: #bbbbbb;
+}
+
+.tasks-overdue-task {
+    color:#fb223a;
 }
 
 /*
