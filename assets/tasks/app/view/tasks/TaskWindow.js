@@ -13,7 +13,7 @@ Ext.define('Tasks.view.tasks.TaskWindow', {
 
         this.items = [
             this.buildForm()
-        ]
+        ];
 
         this.callParent();
     },
