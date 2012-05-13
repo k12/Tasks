@@ -154,11 +154,33 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     onDeleteClick: function() {
-        this.delete(this.getTasksGrid().getSelectionModel().getSelection());
+        var me = this;
+
+        Ext.Msg.show({
+            title: 'Confirm',
+            msg: 'Are you sure you want to delete this tasks?',
+            buttons: Ext.Msg.YESNO,
+            fn: function(response) {
+                if(response === 'yes') {
+                    me.deleteMultiple(me.getTasksGrid().getSelectionModel().getSelection());
+                }
+            }
+        });
     },
 
     onDeleteIconClick: function(gridView, rowIndex, colIndex, column, e) {
-        this.delete(this.getTasksStore().getAt(rowIndex));
+        var me = this;
+
+        Ext.Msg.show({
+            title: 'Confirm',
+            msg: 'Are you sure you want to delete this task?',
+            buttons: Ext.Msg.YESNO,
+            fn: function(response) {
+                if(response === 'yes') {
+                    me.delete(me.getTasksStore().getAt(rowIndex));
+                }
+            }
+        });
     },
 
     changePriority: function(task) {
@@ -217,7 +239,7 @@ Ext.define('Tasks.controller.Tasks', {
                         msg = Ext.isObject(error) ? error.status + ' ' + error.statusText : error;
 
                     Ext.MessageBox.show({
-                        title: 'Creating Task Failed',
+                        title: 'Create Task Failed',
                         msg: msg,
                         icon: Ext.Msg.ERROR,
                         buttons: Ext.Msg.OK
@@ -241,7 +263,7 @@ Ext.define('Tasks.controller.Tasks', {
                     msg = Ext.isObject(error) ? error.status + ' ' + error.statusText : error;
 
                 Ext.MessageBox.show({
-                    title: 'Updating Task Failed',
+                    title: 'Update Task Failed',
                     msg: msg,
                     icon: Ext.Msg.ERROR,
                     buttons: Ext.Msg.OK
@@ -250,21 +272,32 @@ Ext.define('Tasks.controller.Tasks', {
         });
     },
 
-    delete: function(record) {
+    deleteMultiple: function(tasks) {
         var me = this;
 
-        Ext.Msg.show({
-            title: 'Confirm',
-            msg: 'Are you sure you want to delete this tasks?',
-            buttons: Ext.Msg.YESNO,
-            fn: function(response) {
-                if(response === 'yes') {
-                    me.getTasksStore().remove(record);
-                }
+        Ext.each(tasks, function(task) {
+           me.delete(task); //FIXIT: deleting one by one is not a good idea
+        });
+    },
+
+    delete: function(task) {
+        var me = this;
+
+        task.destroy({
+            success: function(task, operation) {
+                me.getTasksStore().remove(task);
+            },
+            failure: function(task, operation) {
+                var error = operation.getError(),
+                    msg = Ext.isObject(error) ? error.status + ' ' + error.statusText : error;
+
+                Ext.MessageBox.show({
+                    title: 'Delete Task Failed',
+                    msg: msg,
+                    icon: Ext.Msg.ERROR,
+                    buttons: Ext.Msg.OK
+                });
             }
         });
-
-
-        //TODO delete task via server side
     }
 });

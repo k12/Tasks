@@ -91,6 +91,30 @@ class TasksController extends CController
         echo json_encode($respond);
     }
 
+    public function actionDelete()
+    {
+        try {
+            $params = $this->getParams();
+
+            if (Tasks::model()->deleteByPk($params['id'])) {
+                $respond = array(
+                    'success' => true
+                );
+            }
+            else {
+                throw new Exception('Specified task not found!');
+            }
+        }
+        catch (Exception $e) {
+            $respond = array(
+                'success' => false,
+                'message' => $e->getMessage()
+            );
+        }
+
+        echo json_encode($respond);
+    }
+
     public function actionError()
     {
         if ($error = Yii::app()->errorHandler->error) {
