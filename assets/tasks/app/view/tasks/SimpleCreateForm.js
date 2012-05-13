@@ -44,6 +44,16 @@ Ext.define('Tasks.view.tasks.SimpleCreateForm', {
             format: 'Y-m-d',
             emptyText: 'Y-m-d'
         }
+    },
+
+    blurInputs: function() {
+        this.items.each(function(item) {
+            var inputEl = item.getEl().down('input');
+
+            if(inputEl) {
+                inputEl.blur();
+            }
+        });
     }
 
 });

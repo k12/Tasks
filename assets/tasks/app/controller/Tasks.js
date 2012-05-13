@@ -188,18 +188,44 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     simpleCreate: function() {
-        var form = this.getSimpleCreateForm().getForm(),
-            titleField = form.findField('title'),
-            taskModel = Ext.create('Tasks.model.Task');
+        var me = this,
+            form = me.getSimpleCreateForm(),
+            basicForm = form.getForm(),
+            formEl = form.getEl(),
+            titleField = basicForm.findField('title'),
+            task = Ext.create('Tasks.model.Task');
 
-        if (form.isValid())
+        if (basicForm.isValid())
         {
-            form.updateRecord(taskModel);
-            this.getTasksStore().add(taskModel);
-            titleField.reset();
-        }
+            basicForm.updateRecord(task);
+            form.blurInputs();
 
-        //TODO save task via server side
+            formEl.mask('Saving...');
+
+            task.save({
+                success: function(task, operation) {
+                    me.getTasksStore().insert(0, task);
+
+                    titleField.reset();
+                    titleField.focus();
+
+                    formEl.unmask();
+                },
+                failure: function(task, operation) {
+                    var error = operation.getError(),
+                        msg = Ext.isObject(error) ? error.status + ' ' + error.statusText : error;
+
+                    Ext.MessageBox.show({
+                        title: 'Creating Task Failed',
+                        msg: msg,
+                        icon: Ext.Msg.ERROR,
+                        buttons: Ext.Msg.OK
+                    });
+
+                    formEl.unmask();
+                }
+            });
+        }
     },
 
     update: function(record) {

@@ -7,6 +7,34 @@ class TasksController extends CController
         $this->render('index');
     }
 
+    public function actionCreate()
+    {
+        try {
+            $params = $this->getParams();
+
+            $task = new Tasks;
+            $task->attributes = $params;
+
+            if($task->save()) {
+                $respond = array(
+                    'success' => true,
+                    'tasks' => $task->attributes
+                );
+            }
+            else {
+                throw new Exception('Saving task failed!');
+            }
+        }
+        catch (Exception $e) {
+            $respond = array(
+                'success' => false,
+                'message' => $e->getMessage()
+            );
+        }
+
+        echo json_encode($respond);
+    }
+
     public function actionRead()
     {
         try {
@@ -39,6 +67,12 @@ class TasksController extends CController
             else
                 $this->render('error', $error);
         }
+    }
+
+    private function getParams()
+    {
+        $data = file_get_contents('php://input');
+        return json_decode($data, true);
     }
 
 }
