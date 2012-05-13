@@ -153,6 +153,10 @@ body {
     color: #bbbbbb;
 }
 
+.tasks-completed-task .x-grid-cell-checkcolumn {
+    text-decoration: none;
+}
+
 .tasks-overdue-task {
     color:#fb223a;
 }
