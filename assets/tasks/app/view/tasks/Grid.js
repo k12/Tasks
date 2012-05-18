@@ -7,8 +7,6 @@ Ext.define('Tasks.view.tasks.Grid', {
         'Tasks.ux.CheckColumn'
     ],
 
-    multiSelect: true,
-
     enableColumnHide: false,
     enableColumnResize: false,
 

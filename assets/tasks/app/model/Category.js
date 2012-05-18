@@ -2,7 +2,7 @@ Ext.define('Tasks.model.Category', {
     extend: 'Ext.data.Model',
 
     fields: [
-        {name: 'id',    type: 'int'},
+        {name: 'id',        type: 'int'},
         {name: 'category',  type: 'string'}
     ],
 
