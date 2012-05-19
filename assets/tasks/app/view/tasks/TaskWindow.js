@@ -10,7 +10,6 @@ Ext.define('Tasks.view.tasks.TaskWindow', {
     layout: 'fit',
 
     initComponent: function() {
-
         this.items = [
             this.buildForm()
         ];
@@ -92,11 +91,12 @@ Ext.define('Tasks.view.tasks.TaskWindow', {
     buildAssignToCombo: function() {
         return {
             xtype: 'combobox',
-            name: 'assignedTo',
+            name: 'assignedToId',
             fieldLabel: 'Assign To',
             labelWidth: 60,
             flex: 1,
             displayField: 'name',
+            valueField: 'id',
             store: Ext.create('Tasks.store.Users')
         }
     },
@@ -116,11 +116,13 @@ Ext.define('Tasks.view.tasks.TaskWindow', {
     buildCategoriesCombo: function() {
         return {
             xtype: 'combobox',
-            name: 'category',
+            name: 'categoryId',
             fieldLabel: 'Category',
             labelWidth: 60,
             flex: 1,
             displayField: 'category',
+            valueField: 'id',
+            value: 'hui',
             store: Ext.create('Tasks.store.Categories')
         }
     },

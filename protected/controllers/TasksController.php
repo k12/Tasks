@@ -127,8 +127,18 @@ class TasksController extends CController
 
     private function getParams()
     {
-        $data = file_get_contents('php://input');
-        return json_decode($data, true);
+        $toNullMap = array('categoryId', 'assignedById', 'assignedToId'); //this fields should be converted from 0 to null values
+        $params = json_decode(file_get_contents('php://input'), true);
+
+        //FIXIT: ugly solution for types compatibility (how to set null value for extjs model's field which type is int?)
+        foreach ($params as $k => $v)
+        {
+            if (in_array($k, $toNullMap) && empty($params[$k])) {
+                $params[$k] = null;
+            }
+        }
+
+        return $params;
     }
 
 }

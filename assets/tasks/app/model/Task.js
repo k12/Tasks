@@ -8,9 +8,9 @@ Ext.define('Tasks.model.Task', {
         {name: 'priority',      type: 'string',     defaultValue: 'None'},
         {name: 'note',          type: 'string'},
         {name: 'done',          type: 'boolean',    defaultValue: false},
-        {name: 'categoryId',    type: 'auto',       defaultValue: null}, //FIXIT: type should be int (default null for int doesnt work)
-        {name: 'assignedToId',  type: 'auto',       defaultValue: null},
-        {name: 'assignedById',  type: 'auto',       defaultValue: null}
+        {name: 'categoryId',    type: 'int',        defaultValue: 2}, //default tasks category is company
+        {name: 'assignedToId',  type: 'int'},
+        {name: 'assignedById',  type: 'int'}
     ],
 
     proxy: {
