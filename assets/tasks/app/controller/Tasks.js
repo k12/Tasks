@@ -120,11 +120,39 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     onSaveClick: function(button, e) {
-        var win = this.getTaskWindow(),
-            form = win.down('form').getForm();
+        var me = this,
+            win = me.getTaskWindow(),
+            form = win.down('form').getForm(),
+            winEl = win.getEl(),
+            task = form.getRecord();
 
         if(form.isValid()) {
-            console.log('saving...');
+            winEl.mask('Saving...');
+            form.updateRecord(task);
+
+            task.save({
+                success: function(task, operation) {
+                    if (!win.taskEdition) {
+                        me.getTasksStore().insert(0, task);
+                    }
+
+                    winEl.unmask();
+                    win.close();
+                },
+                failure: function(task, operation) {
+                    var error = operation.getError(),
+                        msg = Ext.isObject(error) ? error.status + ' ' + error.statusText : error;
+
+                    Ext.MessageBox.show({
+                        title: 'Edit Task Failed',
+                        msg: msg,
+                        icon: Ext.Msg.ERROR,
+                        buttons: Ext.Msg.OK
+                    });
+
+                    winEl.unmask();
+                }
+            })
         }
         else {
             Ext.Msg.alert('Invalid Data', 'Please correct form errors.');
@@ -175,10 +203,13 @@ Ext.define('Tasks.controller.Tasks', {
 
         if (task !== undefined) {
             win.setTitle('Edit Task');
+            win.taskEdition = true;
         }
         else {
             task = Ext.create('Tasks.model.Task');
+            
             win.setTitle('Create Task');
+            win.taskEdition = false;
         }
 
         form.loadRecord(task);
