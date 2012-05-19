@@ -199,7 +199,8 @@ Ext.define('Tasks.controller.Tasks', {
 
     showTaskWindow: function(task) {
         var win = this.getTaskWindow(),
-            form = win.down('form');
+            form = win.down('form'),
+            basicForm = form.getForm();
 
         if (task !== undefined) {
             win.setTitle('Edit Task');
@@ -207,9 +208,11 @@ Ext.define('Tasks.controller.Tasks', {
         }
         else {
             task = Ext.create('Tasks.model.Task');
-            
+
             win.setTitle('Create Task');
             win.taskEdition = false;
+
+            basicForm.findField('title').reset();
         }
 
         form.loadRecord(task);
