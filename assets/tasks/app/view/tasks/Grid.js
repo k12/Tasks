@@ -17,7 +17,7 @@ Ext.define('Tasks.view.tasks.Grid', {
         this.columns = {
             items: [
                 this.buildCheckColumn(),
-                this.buildTitleColumn(),
+                this.buildTaskColumn(),
                 this.buildDueDateColumn(),
                 this.buildPriorityColumn(),
                 this.buildEditTaskColumn(),
@@ -65,9 +65,9 @@ Ext.define('Tasks.view.tasks.Grid', {
         }
     },
 
-    buildTitleColumn: function() {
+    buildTaskColumn: function() {
         return {
-            header: 'Title',
+            header: 'Task',
             dataIndex: 'title',
             flex: 1,
             editor: {

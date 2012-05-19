@@ -6,7 +6,7 @@ Ext.define('Tasks.view.tasks.Details', {
     bodyPadding: 10,
 
     taskTplMarkup: [
-        '<b>Title:</b> {title}<br/><br/>',
+        '<b>{title}</b><br/><br/>',
         '<b>Due date:</b> {dueDate}<br/>',
         '<b>Priority:</b> <span class="{priorityClass}">{priority}</span><br/><br/>',
         '<b>Status:</b> <span class="{statusClass}">{status}</span><br/><br/>',

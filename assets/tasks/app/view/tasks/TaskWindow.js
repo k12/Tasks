@@ -67,7 +67,7 @@ Ext.define('Tasks.view.tasks.TaskWindow', {
         return {
             xtype: 'textfield',
             name: 'title',
-            fieldLabel: 'Title*',
+            fieldLabel: 'Task*',
             labelWidth: 60,
             anchor: '100%',
             allowBlank: false,
