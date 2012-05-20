@@ -19,12 +19,12 @@ body {
     background-position: center;
 }
 
-.edit-task-icon .x-column-header-inner, .delete-icon .x-column-header-inner {
+.edit-task-icon .x-column-header-inner,
+.delete-icon .x-column-header-inner,
+.task-state-header-icon .x-column-header-inner,
+.priority-icon .x-column-header-inner
+{
     padding: 0 4px;
-}
-
-.priority-icon .x-column-header-inner {
-    padding: 0 8px;
 }
 
 .x-action-col-cell img.edit-task-icon,
@@ -54,6 +54,21 @@ body {
     background: url(../images/icons/tick.png) no-repeat;
 }
 
+.task-state-header-icon .x-column-header-text {
+    background-image: url(../images/icons/task_state_header.png);
+}
+
+.x-action-col-cell img.task-assigned-icon {
+    background-image: url(../images/icons/task_assigned.png);
+}
+
+.x-action-col-cell img.task-in-progress-icon {
+    background-image: url(../images/icons/task_in_progress.png);
+}
+
+.x-action-col-cell img.task-completed-icon {
+    background-image: url(../images/icons/task_completed.png);
+}
 
 .priority-icon .x-column-header-text {
     background-image: url(../images/icons/priority.png);
@@ -79,7 +94,7 @@ body {
  * Task details styles
  */
 .priority-none {
-    color: #d3d3d3;
+    color: #cdcdcd;
 }
 
 .priority-low {
@@ -94,7 +109,15 @@ body {
     color: #ff0700;
 }
 
-.status-completed {
+.state-assigned {
+    color: #000000;
+}
+
+.state-in-progress {
+    color: #4f88ff;
+}
+
+.state-completed {
     color: #0fc905;
 }
 
@@ -103,46 +126,6 @@ body {
  */
 .simple-create-task-form .x-form-item {
     margin: 3px 3px 3px 2px;
-}
-
-/*
- * CheckColumn styles
- */
-.x-grid-cell-checkcolumn .x-grid-cell-inner {
-    line-height: 0;
-    padding: 2px 4px;
-}
-
-.x-grid-with-row-lines .x-grid-cell-checkcolumn .x-grid-cell-inner {
-    padding-top: 1px;
-}
-
-.x-grid-checkheader {
-    height: 16px;
-    width: 16px;
-}
-
-.x-grid-checkheader-inner {
-    height: 16px;
-    width: 16px;
-    cursor: pointer;
-    background: url('../images/icons/check.png') no-repeat 1px 1px;
-}
-
-.x-grid-checkheader-checked .x-grid-checkheader-inner {
-    background-position: -1px -16px;
-}
-
-.x-grid-checkheader-over {
-    background: url('../images/icons/check.png') no-repeat 0 -32px;
-}
-
-.tasks-done-column-header .x-column-header-inner {
-    padding: 0 6px;
-}
-
-.tasks-done-column-header .x-column-header-text {
-    background: url('../images/icons/check_header.png') no-repeat 0 7px;
 }
 
 .tasks-completed-task .x-grid-cell {

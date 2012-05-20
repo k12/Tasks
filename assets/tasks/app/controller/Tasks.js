@@ -61,6 +61,7 @@ Ext.define('Tasks.controller.Tasks', {
                     itemmouseenter: this.showActions,
                     itemmouseleave: this.hideActions,
                     selectionchange: this.toggleButtons,
+                    onStateIconClick: this.onStateIconClick,
                     onPriorityIconClick: this.onPriorityIconClick,
                     onEditIconClick: this.onEditIconClick,
                     onDeleteIconClick: this.onDeleteIconClick,
@@ -170,6 +171,10 @@ Ext.define('Tasks.controller.Tasks', {
         this.closeTaskWindow();
     },
 
+    onStateIconClick: function(gridView, rowIndex) {
+        this.changeState(this.getTasksStore().getAt(rowIndex));
+    },
+
     onPriorityIconClick: function(gridView, rowIndex) {
         this.changePriority(this.getTasksStore().getAt(rowIndex));
     },
@@ -197,10 +202,17 @@ Ext.define('Tasks.controller.Tasks', {
         this.delete(this.getTasksStore().getAt(rowIndex));
     },
 
-    changePriority: function(task) {
-        var switchMap = { 'None': 'Low', 'Low': 'Normal', 'Normal': 'High', 'High': 'None' };
+    changeState: function(task) {
+        var switchMap = { 'assigned': 'in progress', 'in progress': 'completed', 'completed': 'assigned' };
 
-        task.set('priority', switchMap[task.data['priority']]);
+        task.set('state', switchMap[task.get('state')]);
+        this.update(task);
+    },
+
+    changePriority: function(task) {
+        var switchMap = { 'none': 'low', 'low': 'normal', 'normal': 'high', 'high': 'none' };
+
+        task.set('priority', switchMap[task.get('priority')]);
         this.update(task);
     },
 

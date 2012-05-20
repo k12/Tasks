@@ -9,7 +9,7 @@ Ext.define('Tasks.view.tasks.Details', {
         '<b>{title}</b><br/><br/>',
         '<b>Due date:</b> {dueDate}<br/>',
         '<b>Priority:</b> <span class="{priorityClass}">{priority}</span><br/><br/>',
-        '<b>Status:</b> <span class="{statusClass}">{status}</span><br/><br/>',
+        '<b>State:</b> <span class="{stateClass}">{state}</span><br/><br/>',
         '<b>Note:</b> {note}<br/>'
     ],
 
@@ -26,9 +26,9 @@ Ext.define('Tasks.view.tasks.Details', {
         var tplData = Ext.clone(data);
 
         tplData['dueDate'] = Ext.Date.format(data['dueDate'], 'Y-m-d');
-        tplData['priorityClass'] = 'priority-'+data['priority'].toLowerCase();
-        tplData['status'] = (data['done']) ? 'Completed' : 'In progress';
-        tplData['statusClass'] = (data['done']) ? 'status-completed' : '';
+        tplData['priorityClass'] = 'priority-'+data['priority'];
+        tplData['state'] = data['state'];
+        tplData['stateClass'] = 'state-'+data['state'].replace(' ','-');
 
         this.tpl.overwrite(this.body, tplData);
     }

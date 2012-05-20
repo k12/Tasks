@@ -3,10 +3,6 @@ Ext.define('Tasks.view.tasks.Grid', {
 
     xtype: 'tasksGrid',
 
-    requires: [
-        'Tasks.ux.CheckColumn'
-    ],
-
     enableColumnHide: false,
     enableColumnResize: false,
 
@@ -16,7 +12,7 @@ Ext.define('Tasks.view.tasks.Grid', {
     initComponent: function() {
         this.columns = {
             items: [
-                this.buildCheckColumn(),
+                this.buildStateColumn(),
                 this.buildTaskColumn(),
                 this.buildDueDateColumn(),
                 this.buildPriorityColumn(),
@@ -44,25 +40,24 @@ Ext.define('Tasks.view.tasks.Grid', {
         this.callParent();
 
         this.addEvents(
-            'onTaskStateChange',
+            'onStateIconClick',
             'onPriorityIconClick',
             'onEditIconClick',
             'onDeleteIconClick'
         );
     },
 
-    buildCheckColumn: function() {
+    buildStateColumn: function() {
         return {
-            xtype: 'checkcolumn',
-            dataIndex: 'done',
+            xtype: 'actioncolumn',
+            dataIndex: 'state',
             width: 24,
             sortable: false,
             align: 'center',
-            cls: 'column-header-icon tasks-done-column-header',
-            listeners: {
-                'checkchange': Ext.bind(this.onTaskStateChange, this)
-            }
-        }
+            cls: 'column-header-icon task-state-header-icon',
+            handler: Ext.bind(this.onStateIconClick, this),
+            getClass: this.getStateColumnClass
+        };
     },
 
     buildTaskColumn: function() {
@@ -143,8 +138,8 @@ Ext.define('Tasks.view.tasks.Grid', {
         this.fireEvent('onRecordEdit', e.record);
     },
 
-    onTaskStateChange: function(column, rowIndex, checked) {
-        this.fireEvent('onRecordEdit', this.store.getAt(rowIndex));
+    onStateIconClick: function(gridView, rowIndex, colIndex, column, e) {
+        this.fireEvent('onStateIconClick', gridView, rowIndex, colIndex, column, e);
     },
 
     onPriorityIconClick: function(gridView, rowIndex, colIndex, column, e) {
@@ -157,6 +152,12 @@ Ext.define('Tasks.view.tasks.Grid', {
 
     onDeleteIconClick: function(gridView, rowIndex, colIndex, column, e) {
         this.fireEvent('onDeleteIconClick', gridView, rowIndex, colIndex, column, e);
+    },
+
+    getStateColumnClass: function(v, metaData, record) {
+        var state = record.data['state'].toLowerCase().replace(' ', '-');
+
+        return 'task-' + state + '-icon';
     },
 
     getPriorityColumnClass: function(v, metaData, record) {
