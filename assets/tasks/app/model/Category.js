@@ -3,7 +3,8 @@ Ext.define('Tasks.model.Category', {
 
     fields: [
         {name: 'id',        type: 'int'},
-        {name: 'category',  type: 'string'}
+        {name: 'category',  type: 'string'},
+        {name: 'editable',  type: 'int',     defaultValue: '1'}
     ],
 
     proxy: {

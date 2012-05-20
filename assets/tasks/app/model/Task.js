@@ -7,7 +7,8 @@ Ext.define('Tasks.model.Task', {
         {name: 'dueDate',       type: 'date',       dateFormat: 'Y-m-d'},
         {name: 'priority',      type: 'string',     defaultValue: 'None'},
         {name: 'note',          type: 'string'},
-        {name: 'done',          type: 'boolean',    defaultValue: false},
+        {name: 'state',         type: 'string',     defaultValue: 'Assigned'},
+        {name: 'completedAt',   type: 'date',       dateFormat: 'Y-m-d'},
         {name: 'categoryId',    type: 'int',        defaultValue: 2}, //default tasks category is company
         {name: 'assignedToId',  type: 'int',        defaultValue: 1}, //default value for simulating logged user
         {name: 'assignedById',  type: 'int',        defaultValue: 1}  //default value for simulating logged user
