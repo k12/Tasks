@@ -9,8 +9,8 @@ Ext.define('Tasks.model.Task', {
         {name: 'note',          type: 'string'},
         {name: 'done',          type: 'boolean',    defaultValue: false},
         {name: 'categoryId',    type: 'int',        defaultValue: 2}, //default tasks category is company
-        {name: 'assignedToId',  type: 'int'},
-        {name: 'assignedById',  type: 'int'}
+        {name: 'assignedToId',  type: 'int',        defaultValue: 1}, //default value for simulating logged user
+        {name: 'assignedById',  type: 'int',        defaultValue: 1}  //default value for simulating logged user
     ],
 
     proxy: {
