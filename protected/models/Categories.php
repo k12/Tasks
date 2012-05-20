@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'categories':
  * @property integer $id
  * @property string $category
+ * @property integer $editable
  *
  * The followings are the available model relations:
  * @property Tasks[] $tasks
@@ -28,10 +29,11 @@ class Categories extends CActiveRecord
         // will receive user inputs.
         return array(
             array('category', 'required'),
+            array('editable', 'numerical', 'integerOnly' => true),
             array('category', 'length', 'max' => 255),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, category', 'safe', 'on' => 'search'),
+            array('id, category, editable', 'safe', 'on' => 'search'),
         );
     }
 
@@ -49,6 +51,7 @@ class Categories extends CActiveRecord
         return array(
             'id' => 'ID',
             'category' => 'Category',
+            'editable' => 'Editable',
         );
     }
 
@@ -61,6 +64,7 @@ class Categories extends CActiveRecord
 
         $criteria->compare('id', $this->id);
         $criteria->compare('category', $this->category, true);
+        $criteria->compare('editable', $this->editable);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

@@ -9,15 +9,16 @@
  * @property string $dueDate
  * @property string $priority
  * @property string $note
- * @property integer $done
+ * @property string $state
+ * @property string $completedAt
  * @property integer $assignedToId
  * @property integer $assignedById
  * @property integer $categoryId
  *
  * The followings are the available model relations:
- * @property Categories $category
  * @property Users $assignedTo
  * @property Users $assignedBy
+ * @property Categories $category
  */
 class Tasks extends CActiveRecord
 {
@@ -37,13 +38,14 @@ class Tasks extends CActiveRecord
         // will receive user inputs.
         return array(
             array('title', 'required'),
-            array('done, assignedToId, assignedById, categoryId', 'numerical', 'integerOnly' => true),
+            array('assignedToId, assignedById, categoryId', 'numerical', 'integerOnly' => true),
             array('title', 'length', 'max' => 255),
-            array('priority', 'length', 'max' => 64),
-            array('dueDate, note', 'safe'),
+            array('priority', 'length', 'max' => 6),
+            array('state', 'length', 'max' => 11),
+            array('dueDate, note, completedAt', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, title, dueDate, priority, note, done, assignedToId, assignedById, categoryId', 'safe', 'on' => 'search'),
+            array('id, title, dueDate, priority, note, state, completedAt, assignedToId, assignedById, categoryId', 'safe', 'on' => 'search'),
         );
     }
 
@@ -52,9 +54,9 @@ class Tasks extends CActiveRecord
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
-            'category' => array(self::BELONGS_TO, 'Categories', 'categoryId'),
             'assignedTo' => array(self::BELONGS_TO, 'Users', 'assignedToId'),
             'assignedBy' => array(self::BELONGS_TO, 'Users', 'assignedById'),
+            'category' => array(self::BELONGS_TO, 'Categories', 'categoryId'),
         );
     }
 
@@ -66,7 +68,8 @@ class Tasks extends CActiveRecord
             'dueDate' => 'Due Date',
             'priority' => 'Priority',
             'note' => 'Note',
-            'done' => 'Done',
+            'state' => 'State',
+            'completedAt' => 'Completed At',
             'assignedToId' => 'Assigned To',
             'assignedById' => 'Assigned By',
             'categoryId' => 'Category',
@@ -85,7 +88,8 @@ class Tasks extends CActiveRecord
         $criteria->compare('dueDate', $this->dueDate, true);
         $criteria->compare('priority', $this->priority, true);
         $criteria->compare('note', $this->note, true);
-        $criteria->compare('done', $this->done);
+        $criteria->compare('state', $this->state, true);
+        $criteria->compare('completedAt', $this->completedAt, true);
         $criteria->compare('assignedToId', $this->assignedToId);
         $criteria->compare('assignedById', $this->assignedById);
         $criteria->compare('categoryId', $this->categoryId);
@@ -93,16 +97,5 @@ class Tasks extends CActiveRecord
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
         ));
-    }
-
-    //FIXIT: ugly solution for variable types compatibility between exts and yii
-    public function onBeforeValidate($event)
-    {
-        $this->done = (int)$this->done;
-    }
-
-    public function onAfterValidate($event)
-    {
-        $this->done = (boolean)$this->done;
     }
 }
