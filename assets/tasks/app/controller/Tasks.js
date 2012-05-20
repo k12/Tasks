@@ -69,6 +69,9 @@ Ext.define('Tasks.controller.Tasks', {
                 'simpleCreateForm textfield': {
                     specialkey: this.onSpecialKey
                 },
+                'simpleCreateForm #create-btn': {
+                    click: this.onSimpleCreateClick
+                },
                 'taskWindow #save-btn': {
                     click: this.onSaveClick
                 },
@@ -117,6 +120,10 @@ Ext.define('Tasks.controller.Tasks', {
         if(e.getKey() === e.ENTER) {
             this.simpleCreate();
         }
+    },
+
+    onSimpleCreateClick: function(button, e) {
+        this.simpleCreate();
     },
 
     onSaveClick: function(button, e) {

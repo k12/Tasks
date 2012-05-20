@@ -104,9 +104,6 @@ body {
 .simple-create-task-form .x-form-item {
     margin: 3px 3px 3px 2px;
 }
-.simple-create-task-form .create-icon {
-    background-position: 4px 5px;
-}
 
 /*
  * CheckColumn styles

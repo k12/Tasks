@@ -8,21 +8,12 @@ Ext.define('Tasks.view.tasks.SimpleCreateForm', {
 
     initComponent: function() {
         this.items = [
-            this.buildCreateIcon(),
             this.buildTitleField(),
-            this.buildDueDateField()
+            this.buildDueDateField(),
+            this.buildCreateButton()
         ];
 
-        this.callParent(arguments);
-    },
-
-    buildCreateIcon: function() {
-        return {
-            xtype: 'component',
-            cls: 'create-icon',
-            width: 24,
-            height: 24
-        }
+        this.callParent();
     },
 
     buildTitleField: function() {
@@ -40,9 +31,20 @@ Ext.define('Tasks.view.tasks.SimpleCreateForm', {
         return {
             xtype: 'datefield',
             name: 'dueDate',
-            width: 167,
+            width: 93,
             format: 'Y-m-d',
             emptyText: 'Y-m-d'
+        }
+    },
+
+    buildCreateButton: function() {
+        return {
+            xtype: 'button',
+            text: 'Create',
+            itemId: 'create-btn',
+            iconCls: 'create-icon',
+            margin: '3 3 0 3',
+            width: 68
         }
     },
 
