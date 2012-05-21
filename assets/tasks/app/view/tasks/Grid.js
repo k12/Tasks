@@ -169,7 +169,7 @@ Ext.define('Tasks.view.tasks.Grid', {
     getRowClass: function(record, rowIndex, rowParams, store){
         var dueDate = record.get('dueDate');
 
-        if (record.get('done')) {
+        if (record.get('state') == 'completed') {
             return 'tasks-completed-task';
         }
         else if (dueDate && (dueDate < Ext.Date.clearTime(new Date()))) {
