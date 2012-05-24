@@ -70,7 +70,7 @@ Ext.define('Tasks.controller.Tasks', {
                 'simpleCreateForm textfield': {
                     specialkey: this.onSpecialKey
                 },
-                'simpleCreateForm #create-btn': {
+                'simpleCreateForm #simple-create-btn': {
                     click: this.onSimpleCreateClick
                 },
                 'taskWindow #save-btn': {

@@ -50,6 +50,10 @@ body {
     background: url(../images/icons/create.png) no-repeat;
 }
 
+.simple-create-icon {
+    background: url(../images/icons/simple_create.png) no-repeat;
+}
+
 .save-icon {
     background: url(../images/icons/tick.png) no-repeat;
 }

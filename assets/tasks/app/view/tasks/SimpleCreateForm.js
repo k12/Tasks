@@ -31,7 +31,7 @@ Ext.define('Tasks.view.tasks.SimpleCreateForm', {
         return {
             xtype: 'datefield',
             name: 'dueDate',
-            width: 93,
+            width: 140,
             format: 'Y-m-d',
             emptyText: 'Y-m-d'
         }
@@ -40,11 +40,10 @@ Ext.define('Tasks.view.tasks.SimpleCreateForm', {
     buildCreateButton: function() {
         return {
             xtype: 'button',
-            text: 'Create',
-            itemId: 'create-btn',
-            iconCls: 'create-icon',
+            itemId: 'simple-create-btn',
+            iconCls: 'simple-create-icon',
             margin: '3 3 0 3',
-            width: 68
+            width: 22
         }
     },
 
