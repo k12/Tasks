@@ -87,6 +87,10 @@ Ext.define('Tasks.controller.Tasks', {
         this.getDetailsPanel().updateDetails(record.data);
     },
 
+    resetDetails: function(gridView, record) {
+        this.getDetailsPanel().resetDetails();
+    },
+
     showActions: function(gridView, record, node, rowIndex, e) {
         var icons = Ext.DomQuery.select('.can-be-hidden', node);
 
@@ -175,10 +179,12 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     onStateIconClick: function(gridView, rowIndex) {
+        this.getTasksGrid().getSelectionModel().select(rowIndex);
         this.changeState(this.getTasksStore().getAt(rowIndex));
     },
 
     onPriorityIconClick: function(gridView, rowIndex) {
+        this.getTasksGrid().getSelectionModel().select(rowIndex);
         this.changePriority(this.getTasksStore().getAt(rowIndex));
     },
 
@@ -193,6 +199,7 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     onEditIconClick: function(gridView, rowIndex, colIndex, column, e) {
+        this.getTasksGrid().getSelectionModel().select(rowIndex);
         this.showTaskWindow(gridView.getRecord(gridView.findTargetByEvent(e)))
     },
 
@@ -202,6 +209,7 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     onDeleteIconClick: function(gridView, rowIndex, colIndex, column, e) {
+        this.getTasksGrid().getSelectionModel().select(rowIndex);
         this.delete(this.getTasksStore().getAt(rowIndex));
     },
 
@@ -319,6 +327,7 @@ Ext.define('Tasks.controller.Tasks', {
                     task.destroy({
                         success: function(task, operation) {
                             me.getTasksStore().remove(task);
+                            me.resetDetails();
                         },
                         failure: function(task, operation) {
                             var error = operation.getError(),

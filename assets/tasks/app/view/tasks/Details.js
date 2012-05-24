@@ -31,5 +31,9 @@ Ext.define('Tasks.view.tasks.Details', {
         tplData['stateClass'] = 'state-'+data['state'].replace(' ','-');
 
         this.tpl.overwrite(this.body, tplData);
+    },
+
+    resetDetails: function() {
+        this.update(this.startingMarkup);
     }
 });
