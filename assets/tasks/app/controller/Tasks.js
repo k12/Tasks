@@ -143,6 +143,9 @@ Ext.define('Tasks.controller.Tasks', {
                     if (!win.taskEdition) {
                         me.getTasksStore().insert(0, task);
                     }
+                    else {
+                        me.showDetails(null, task);
+                    }
 
                     winEl.unmask();
                     win.close();
