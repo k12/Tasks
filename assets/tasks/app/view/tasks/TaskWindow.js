@@ -109,7 +109,7 @@ Ext.define('Tasks.view.tasks.TaskWindow', {
             labelWidth: 60,
             width: 185,
             margin: '0 15 0 0',
-            store: ['None', 'Low', 'Normal', 'High']
+            store: ['none', 'low', 'normal', 'high']
         }
     },
 
