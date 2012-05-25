@@ -297,6 +297,12 @@ Ext.define('Tasks.controller.Tasks', {
     update: function(task) {
         var me = this;
 
+        if(task.get('state') == 'completed') {
+            task.set('completedAt', Ext.Date.format(new Date(), 'Y-m-d'));
+        } else {
+            task.set('completedAt', null);
+        }
+
         task.save({
             success: function(task, operation) {
                 me.showDetails(null, task);
