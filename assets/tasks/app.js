@@ -10,6 +10,7 @@ Ext.onReady(function(){
         autoCreateViewport: true,
 
         controllers: [
+            'Views',
             'Categories',
             'Tasks'
         ]

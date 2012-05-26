@@ -4,13 +4,15 @@ Ext.define('Tasks.controller.Tasks', {
     models: [
         'Task',
         'User',
-        'Category'
+        'Category',
+        'View'
     ],
 
     stores: [
         'Tasks',
         'Users',
-        'Categories'
+        'Categories',
+        'Views'
     ],
 
     views: [
