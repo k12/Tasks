@@ -1,8 +1,8 @@
-Ext.define('Tasks.controller.Lists', {
+Ext.define('Tasks.controller.Categories', {
     extend: 'Ext.app.Controller',
 
     views: [
-        'lists.Tree'
+        'categories.Grid'
     ],
 
     init: function() {

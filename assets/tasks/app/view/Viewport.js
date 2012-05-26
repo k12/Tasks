@@ -27,9 +27,9 @@ Ext.define('Tasks.view.Viewport', {
 
     buildWestRegion: function() {
         return {
-            xtype: 'listsTree',
+            xtype: 'categoriesGrid',
             region: 'west',
-            title: 'Lists',
+            title: 'Categories',
             width: 250,
             collapsible: true,
             split: true
