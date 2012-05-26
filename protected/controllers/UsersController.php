@@ -10,16 +10,22 @@ class UsersController extends CController
     public function actionRead()
     {
         try {
-            $users = Users::model()->findAll(array(
-                'select'=>'*',
-                'order'=>'name ASC'
-            ));
+            if (isset($_GET['id'])) { //retrieve one user
+                $user = Users::model()->findByPk($_GET['id']);
+                $respond['users'] = $user->attributes;
+            }
+            else {
+                $users = Users::model()->findAll(array(
+                    'select'=>'*',
+                    'order'=>'name ASC'
+                ));
+
+                foreach($users as $user) {
+                    $respond['users'][] = $user->attributes;
+                }
+            }
 
             $respond['success'] = true;
-
-            foreach($users as $user) {
-                $respond['users'][] = $user->attributes;
-            }
         }
         catch (Exception $e) {
             $respond = array(
