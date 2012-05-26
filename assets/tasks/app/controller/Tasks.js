@@ -84,6 +84,18 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     showDetails: function(gridView, record) {
+        /*
+        console.log(record);
+
+        record.getAssignedTo(function(user, operation) {
+            console.log('Assigned To: ' + user.get('name'));
+        }, this );
+
+        record.getAssignedBy(function(user, operation) {
+            console.log('Assigned By: ' + user.get('name'));
+        }, this );
+        */
+
         this.getDetailsPanel().updateDetails(record.data);
     },
 

@@ -14,6 +14,11 @@ Ext.define('Tasks.model.Task', {
         {name: 'assignedById',  type: 'int',        defaultValue: 1}  //default value for simulating logged user
     ],
 
+    associations: [
+        { type: 'belongsTo', model: 'Tasks.model.User', primaryKey: 'id', foreignKey: 'assignedToId', getterName: 'getAssignedTo' },
+        { type: 'belongsTo', model: 'Tasks.model.User', primaryKey: 'id', foreignKey: 'assignedById', getterName: 'getAssignedBy' }
+    ],
+
     proxy: {
         type: 'ajax',
         api: {

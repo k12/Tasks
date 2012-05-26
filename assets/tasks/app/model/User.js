@@ -6,6 +6,8 @@ Ext.define('Tasks.model.User', {
         {name: 'name',  type: 'string'}
     ],
 
+    hasMany: {model: 'Tasks.model.Task', name: 'tasks'},
+
     proxy: {
         type: 'ajax',
         api: {
