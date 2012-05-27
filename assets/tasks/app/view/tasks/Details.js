@@ -9,6 +9,8 @@ Ext.define('Tasks.view.tasks.Details', {
         '<b>{title}</b><br/><br/>',
         '<b>Due date:</b> {dueDate}<br/>',
         '<b>Priority:</b> <span class="{priorityClass}">{priority}</span><br/><br/>',
+        '<b>Assigned by:</b> {assignedBy}<br/>',
+        '<b>Assigned to:</b> {assignedTo}<br/><br/>',
         '<b>State:</b> <span class="{stateClass}">{state}</span><br/>',
         '{completedAt}',
         '<b>Note:</b><br/> {note}<br/>'
@@ -23,14 +25,18 @@ Ext.define('Tasks.view.tasks.Details', {
         this.callParent();
     },
 
-    updateDetails: function(data) {
-        var tplData = Ext.clone(data);
+    updateDetails: function(task) {
+        var tplData = Ext.clone(task.data);
 
-        tplData['dueDate'] = Ext.Date.format(data['dueDate'], 'Y-m-d');
-        tplData['priorityClass'] = 'priority-'+data['priority'];
-        tplData['state'] = data['state'];
-        tplData['stateClass'] = 'state-'+data['state'].replace(' ','-');
-        tplData['completedAt'] = (data['completedAt'] != null) ? '<b>Completed at:</b> '+Ext.Date.format(data['completedAt'], 'Y-m-d')+'<br/><br/>' : '<br/>';
+        console.log(task);
+
+        tplData['dueDate'] = Ext.Date.format(task.get('dueDate'), 'Y-m-d');
+        tplData['priorityClass'] = 'priority-'+task.get('priority');
+        tplData['assignedBy'] = task.getAssignedBy().get('name');
+        tplData['assignedTo'] = task.getAssignedTo().get('name');
+        tplData['state'] = task.get('state');
+        tplData['stateClass'] = 'state-'+task.get('state').replace(' ','-');
+        tplData['completedAt'] = (task.get('completedAt') != null) ? '<b>Completed at:</b> '+Ext.Date.format(task.get('completedAt'), 'Y-m-d')+'<br/><br/>' : '<br/>';
 
         this.tpl.overwrite(this.body, tplData);
     },

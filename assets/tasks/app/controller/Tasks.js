@@ -85,23 +85,30 @@ Ext.define('Tasks.controller.Tasks', {
         );
     },
 
-    showDetails: function(gridView, record) {
-        /*
-        console.log(record);
+    showDetails: function(gridView, task) {
+        this.getDetailsPanel().setLoading('Loading...', true);
 
-        record.getAssignedTo(function(user, operation) {
-            console.log('Assigned To: ' + user.get('name'));
-        }, this );
-
-        record.getAssignedBy(function(user, operation) {
-            console.log('Assigned By: ' + user.get('name'));
-        }, this );
-        */
-
-        this.getDetailsPanel().updateDetails(record.data);
+        task.getAssignedBy({
+            success: function(user, operation) {
+                task.getAssignedTo({
+                    success: function(user, operation) {
+                        this.getDetailsPanel().setLoading(false);
+                        this.getDetailsPanel().updateDetails(task);  //all fields have been loaded - we can show details
+                    },
+                    failure: function(user, operation) {
+                        this.getDetailsPanel().setLoading(false);
+                    },
+                    scope: this
+                });
+            },
+            failure: function(user, operation) {
+                this.getDetailsPanel().setLoading(false);
+            },
+            scope: this
+        });
     },
 
-    resetDetails: function(gridView, record) {
+    resetDetails: function(gridView, task) {
         this.getDetailsPanel().resetDetails();
     },
 
