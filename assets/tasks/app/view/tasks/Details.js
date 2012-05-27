@@ -28,8 +28,6 @@ Ext.define('Tasks.view.tasks.Details', {
     updateDetails: function(task) {
         var tplData = Ext.clone(task.data);
 
-        console.log(task);
-
         tplData['dueDate'] = Ext.Date.format(task.get('dueDate'), 'Y-m-d');
         tplData['priorityClass'] = 'priority-'+task.get('priority');
         tplData['assignedBy'] = task.getAssignedBy().get('name');
