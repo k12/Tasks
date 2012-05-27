@@ -41,7 +41,6 @@ Ext.define('Tasks.view.Viewport', {
                 {
                     xtype: 'categoriesGrid',
                     title: 'Categories',
-                    margin: '5 0 0 0',
                     anchor: '100% 50%'
                 }
             ]
