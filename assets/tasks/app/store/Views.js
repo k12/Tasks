@@ -3,9 +3,11 @@ Ext.define('Tasks.store.Views', {
 
     model: 'Tasks.model.View',
 
+    sorters: 'view',
     autoLoad: true,
 
     data : [
+        {id: 0, view: 'All'},
         {id: 1, view: 'Assigned'},
         {id: 2, view: 'In progress'},
         {id: 3, view: 'Overdue'},
@@ -14,7 +16,5 @@ Ext.define('Tasks.store.Views', {
         {id: 6, view: 'This week'},
         {id: 7, view: 'Future'},
         {id: 8, view: 'Completed'}
-    ],
-
-    sorters: 'view'
+    ]
 });
