@@ -14,5 +14,7 @@ Ext.define('Tasks.store.Views', {
         {id: 6, view: 'This week'},
         {id: 7, view: 'Future'},
         {id: 8, view: 'Completed'}
-    ]
+    ],
+
+    sorters: 'view'
 });

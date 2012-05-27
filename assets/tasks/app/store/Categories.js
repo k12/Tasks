@@ -3,5 +3,6 @@ Ext.define('Tasks.store.Categories', {
 
     model: 'Tasks.model.Category',
 
-    autoLoad: true
+    autoLoad: true,
+    sorters: 'category'
 });
