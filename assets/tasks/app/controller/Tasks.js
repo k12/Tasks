@@ -86,23 +86,26 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     showDetails: function(gridView, task) {
-        this.getDetailsPanel().setLoading('Loading...', true);
+        var panel = this.getDetailsPanel();
 
+        panel.setLoading('Loading...', true);
+
+        //TODO: better errors handling
         task.getAssignedBy({
             success: function(user, operation) {
                 task.getAssignedTo({
                     success: function(user, operation) {
-                        this.getDetailsPanel().setLoading(false);
-                        this.getDetailsPanel().updateDetails(task);  //all fields have been loaded - we can show details
+                        panel.setLoading(false);
+                        panel.updateDetails(task);  //all fields have been loaded - we can show details
                     },
                     failure: function(user, operation) {
-                        this.getDetailsPanel().setLoading(false);
+                        panel.setLoading(false);
                     },
                     scope: this
                 });
             },
             failure: function(user, operation) {
-                this.getDetailsPanel().setLoading(false);
+                panel.setLoading(false);
             },
             scope: this
         });
