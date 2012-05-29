@@ -11,7 +11,7 @@ Ext.define('Tasks.view.tasks.TabPanel', {
     buildTabs: function() {
         return [
             {
-                title: 'My tasks',
+                title: 'My Tasks',
                 items: [
                     {
                         xtype: 'tasksGrid'
