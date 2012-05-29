@@ -27,23 +27,11 @@ Ext.define('Tasks.view.Viewport', {
 
     buildWestRegion: function() {
         return {
-            xtype: 'container',
+            xtype: 'filtersGrid',
             region: 'west',
+            title: 'Filters',
             width: 250,
-            layout: 'anchor',
-            margin: '0 5 0 0',
-            items: [
-                {
-                    xtype: 'filtersGrid',
-                    title: 'Filters',
-                    anchor: '100% 50%'
-                },
-                {
-                    xtype: 'categoriesGrid',
-                    title: 'Categories',
-                    anchor: '100% 50%'
-                }
-            ]
+            margin: '0 5 0 0'
         }
     },
 

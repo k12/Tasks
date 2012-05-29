@@ -11,7 +11,6 @@ Ext.onReady(function(){
 
         controllers: [
             'Filters',
-            'Categories',
             'Tasks'
         ]
     });
