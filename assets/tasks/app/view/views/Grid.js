@@ -9,6 +9,13 @@ Ext.define('Tasks.view.views.Grid', {
     store: 'Views',
 
     initComponent: function() {
+        var groupingFeature = Ext.create('Ext.grid.feature.Grouping', {
+            groupHeaderTpl: '{name}',
+            enableGroupingMenu: false
+        });
+
+        this.features = [groupingFeature];
+
         this.columns = {
             items: [
                 this.buildViewColumn()

@@ -3,18 +3,19 @@ Ext.define('Tasks.store.Views', {
 
     model: 'Tasks.model.View',
 
-    sorters: 'view',
+    groupField: 'type',
     autoLoad: true,
 
     data : [
-        {id: 0, view: 'All'},
-        {id: 1, view: 'Assigned'},
-        {id: 2, view: 'In progress'},
-        {id: 3, view: 'Overdue'},
-        {id: 4, view: 'Today'},
-        {id: 5, view: 'Tomorrow'},
-        {id: 6, view: 'This week'},
-        {id: 7, view: 'Future'},
-        {id: 8, view: 'Completed'}
+        {id: 0, view: 'All',            type: 'Others'},
+        {id: 1, view: 'Not started',    type: 'State'},
+        {id: 2, view: 'In progress',    type: 'State'},
+        {id: 3, view: 'Completed',      type: 'State'},
+        {id: 4, view: 'Today',          type: 'Due Date'},
+        {id: 5, view: 'Tomorrow',       type: 'Due Date'},
+        {id: 6, view: 'This week',      type: 'Due Date'},
+        {id: 7, view: 'Future',         type: 'Due Date'},
+        {id: 8, view: 'Overdue',        type: 'Due Date'},
+        {id: 9, view: 'Without',        type: 'Due Date'}
     ]
 });

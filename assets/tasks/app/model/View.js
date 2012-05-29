@@ -3,7 +3,8 @@ Ext.define('Tasks.model.View', {
 
     fields: [
         {name: 'id',        type: 'int'},
-        {name: 'view',      type: 'string'}
+        {name: 'view',      type: 'string'},
+        {name: 'type',      type: 'string'}
     ],
 
     proxy: {

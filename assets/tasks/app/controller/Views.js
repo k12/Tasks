@@ -41,7 +41,7 @@ Ext.define('Tasks.controller.Views', {
         tasksStore.clearFilter();
 
         switch (record.get('view').toLowerCase()) {
-            case 'assigned':
+            case 'not started':
                 tasksStore.filter('state', 'assigned');
                 break;
             case 'in progress':
@@ -53,11 +53,12 @@ Ext.define('Tasks.controller.Views', {
             case 'future':
                 tasksStore.filter({
                     filterFn: function(item) {
-                        var dueDate = item.get('dueDate');
+                        var dueDate = item.get('dueDate'),
+                            state = item.get('state');
 
                         if (dueDate != null)
                         {
-                            return (Ext.Date.clearTime(dueDate) > now);
+                            return (Ext.Date.clearTime(dueDate) > now && state != 'completed');
                         }
 
                         return false;
@@ -67,11 +68,12 @@ Ext.define('Tasks.controller.Views', {
             case 'overdue':
                 tasksStore.filter({
                     filterFn: function(item) {
-                        var dueDate = item.get('dueDate');
+                        var dueDate = item.get('dueDate'),
+                            state = item.get('state');
 
                         if (dueDate != null)
                         {
-                            return (Ext.Date.clearTime(dueDate) < now);
+                            return (Ext.Date.clearTime(dueDate) < now && state != 'completed');
                         }
 
                         return false;
@@ -82,11 +84,12 @@ Ext.define('Tasks.controller.Views', {
                 tasksStore.filter({
                     filterFn: function(item) {
                         //TODO: temporary solution +7 days - fix it!
-                        var dueDate = item.get('dueDate');
+                        var dueDate = item.get('dueDate'),
+                            state = item.get('state');
 
                         if (dueDate != null)
                         {
-                            return (Ext.Date.clearTime(dueDate) < Ext.Date.add(now, Ext.Date.DAY, 7));
+                            return (Ext.Date.clearTime(dueDate) < Ext.Date.add(now, Ext.Date.DAY, 7)  && state != 'completed');
                         }
 
                         return false;
@@ -96,11 +99,12 @@ Ext.define('Tasks.controller.Views', {
             case 'today':
                 tasksStore.filter({
                     filterFn: function(item) {
-                        var dueDate = item.get('dueDate');
+                        var dueDate = item.get('dueDate'),
+                            state = item.get('state');
 
                         if (dueDate != null)
                         {
-                            return (Ext.Date.clearTime(dueDate).getTime() === now.getTime());
+                            return (Ext.Date.clearTime(dueDate).getTime() === now.getTime() && state != 'completed');
                         }
 
                         return false;
@@ -110,14 +114,25 @@ Ext.define('Tasks.controller.Views', {
             case 'tomorrow':
                 tasksStore.filter({
                     filterFn: function(item) {
-                        var dueDate = item.get('dueDate');
+                        var dueDate = item.get('dueDate'),
+                            state = item.get('state');
 
                         if (dueDate != null)
                         {
-                            return (Ext.Date.clearTime(dueDate).getTime() === Ext.Date.add(now, Ext.Date.DAY, 1).getTime());
+                            return (Ext.Date.clearTime(dueDate).getTime() === Ext.Date.add(now, Ext.Date.DAY, 1).getTime() && state != 'completed');
                         }
 
                         return false;
+                    }
+                });
+                break;
+            case 'without': //without due date
+                tasksStore.filter({
+                    filterFn: function(item) {
+                        var dueDate = item.get('dueDate'),
+                            state = item.get('state');
+
+                        return (dueDate == null && state != 'completed');
                     }
                 });
                 break;
