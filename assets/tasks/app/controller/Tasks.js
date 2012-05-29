@@ -330,6 +330,7 @@ Ext.define('Tasks.controller.Tasks', {
         task.save({
             success: function(task, operation) {
                 me.showDetails(null, task);
+                me.getTasksGrid().refreshFilters();
             },
             failure: function(task, operation) {
                 var error = operation.getError(),

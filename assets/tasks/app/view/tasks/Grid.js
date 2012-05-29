@@ -175,5 +175,17 @@ Ext.define('Tasks.view.tasks.Grid', {
         else if (dueDate && (dueDate < Ext.Date.clearTime(new Date()))) {
             return 'tasks-overdue-task';
         }
-    }
+    },
+
+    refreshFilters: function() {
+        var store = this.store,
+            filters = store.filters;
+
+        // save a reference to the existing task filters before clearing them
+        filters = filters.getRange(0, filters.getCount() - 1);
+
+        // clear the tasks store's filters and reapply them.
+        store.clearFilter();
+        store.filter(filters);
+    },
 });
