@@ -28,10 +28,15 @@ Ext.define('Tasks.controller.Filters', {
         this.control(
             {
                 'filtersGrid': {
-                    select: this.filterTasksGrid
+                    select: this.filterTasksGrid,
+                    afterrender: this.onAfterRender
                 }
             }
         );
+    },
+
+    onAfterRender: function(filtersGrid) {
+        filtersGrid.getSelectionModel().select(8); //TODO: fix that static index!
     },
 
     filterTasksGrid: function(rowModel, record, index, eOpts) {
