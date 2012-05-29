@@ -42,7 +42,7 @@ Ext.define('Tasks.controller.Filters', {
 
         switch (record.get('filter').toLowerCase()) {
             case 'not started':
-                tasksStore.filter('state', 'assigned');
+                tasksStore.filter('state', 'not started');
                 break;
             case 'in progress':
                 tasksStore.filter('state', 'in progress');

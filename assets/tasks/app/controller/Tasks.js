@@ -238,7 +238,7 @@ Ext.define('Tasks.controller.Tasks', {
     },
 
     changeState: function(task) {
-        var switchMap = { 'assigned': 'in progress', 'in progress': 'completed', 'completed': 'assigned' };
+        var switchMap = { 'not started': 'in progress', 'in progress': 'completed', 'completed': 'not started' };
 
         task.set('state', switchMap[task.get('state')]);
         this.update(task);

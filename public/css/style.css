@@ -62,8 +62,8 @@ body {
     background-image: url(../images/icons/task_state_header.png);
 }
 
-.x-action-col-cell img.task-assigned-icon {
-    background-image: url(../images/icons/task_assigned.png);
+.x-action-col-cell img.task-not-started-icon {
+    background-image: url(../images/icons/task_not_started.png);
 }
 
 .x-action-col-cell img.task-in-progress-icon {
@@ -113,7 +113,7 @@ body {
     color: #ff0700;
 }
 
-.state-assigned {
+.state-not-started {
     color: #000000;
 }
 
