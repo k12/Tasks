@@ -5,14 +5,14 @@ Ext.define('Tasks.controller.Tasks', {
         'Task',
         'User',
         'Category',
-        'View'
+        'Filter'
     ],
 
     stores: [
         'Tasks',
         'Users',
         'Categories',
-        'Views'
+        'Filters'
     ],
 
     views: [

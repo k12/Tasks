@@ -34,8 +34,8 @@ Ext.define('Tasks.view.Viewport', {
             margin: '0 5 0 0',
             items: [
                 {
-                    xtype: 'viewsGrid',
-                    title: 'Views',
+                    xtype: 'filtersGrid',
+                    title: 'Filters',
                     anchor: '100% 50%'
                 },
                 {

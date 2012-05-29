@@ -1,12 +1,12 @@
-Ext.define('Tasks.view.views.Grid', {
+Ext.define('Tasks.view.filters.Grid', {
     extend: 'Ext.grid.Panel',
 
-    xtype: 'viewsGrid',
+    xtype: 'filtersGrid',
 
     hideHeaders: true,
 
-    model: 'View',
-    store: 'Views',
+    model: 'Filter',
+    store: 'Filters',
 
     initComponent: function() {
         var groupingFeature = Ext.create('Ext.grid.feature.Grouping', {
@@ -27,8 +27,8 @@ Ext.define('Tasks.view.views.Grid', {
 
     buildViewColumn: function() {
         return {
-            header: 'View',
-            dataIndex: 'view',
+            header: 'Filter',
+            dataIndex: 'filter',
             flex: 1
         };
     }

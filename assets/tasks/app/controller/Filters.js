@@ -1,33 +1,33 @@
-Ext.define('Tasks.controller.Views', {
+Ext.define('Tasks.controller.Filters', {
     extend: 'Ext.app.Controller',
 
     models: [
         'Task',
         'User',
-        'View'
+        'Filter'
     ],
 
     stores: [
         'Tasks',
         'Users',
-        'Views'
+        'Filters'
     ],
 
     views: [
-        'views.Grid'
+        'filters.Grid'
     ],
 
     refs: [
         {
-            ref: 'viewsGrid',
-            selector: 'viewsGrid'
+            ref: 'filtersGrid',
+            selector: 'filtersGrid'
         }
     ],
 
     init: function() {
         this.control(
             {
-                'viewsGrid': {
+                'filtersGrid': {
                     select: this.filterTasksGrid
                 }
             }
@@ -40,7 +40,7 @@ Ext.define('Tasks.controller.Views', {
 
         tasksStore.clearFilter();
 
-        switch (record.get('view').toLowerCase()) {
+        switch (record.get('filter').toLowerCase()) {
             case 'not started':
                 tasksStore.filter('state', 'assigned');
                 break;
