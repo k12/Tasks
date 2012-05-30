@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas wygenerowania: 29 May 2012, 22:57
+-- Czas wygenerowania: 30 May 2012, 00:02
 -- Wersja serwera: 5.5.16
 -- Wersja PHP: 5.3.8
 
@@ -19,6 +19,29 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `tasks`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla  `categories`
+--
+
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category` varchar(255) NOT NULL,
+  `editable` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Zrzut danych tabeli `categories`
+--
+
+INSERT INTO `categories` (`id`, `category`, `editable`) VALUES
+(1, 'Private', 0),
+(2, 'Company', 0),
+(3, 'Assigned To Others', 0),
+(4, 'Assigned To Me', 0);
 
 -- --------------------------------------------------------
 
@@ -48,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 --
 
 INSERT INTO `tasks` (`id`, `title`, `dueDate`, `priority`, `note`, `state`, `completedAt`, `assignedToId`, `assignedById`, `categoryId`) VALUES
-(25, 'Task 01', NULL, 'none', 'Lorem ipsum...', 'not started', NULL, 2, 3, 2),
+(25, 'Task 01', NULL, 'low', 'Lorem ipsum...', 'not started', NULL, 2, 3, 2),
 (26, 'Task 02', '2012-05-27', 'low', '', 'completed', '2012-05-28', 1, 1, 2),
 (27, 'Task 03', '2012-05-29', 'none', '', 'completed', '2012-05-28', 1, 1, 2),
 (28, 'Task 04', '2012-05-30', 'normal', '', 'completed', '2012-05-29', 1, 1, 2),
@@ -57,6 +80,27 @@ INSERT INTO `tasks` (`id`, `title`, `dueDate`, `priority`, `note`, `state`, `com
 (31, 'Task 07', NULL, 'normal', '', 'in progress', NULL, 1, 1, 1),
 (32, 'Task 08', '2012-05-31', 'high', '', 'in progress', NULL, 1, 1, 2),
 (33, 'Task 09', '2012-05-22', 'none', '', 'in progress', NULL, 1, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla  `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Zrzut danych tabeli `users`
+--
+
+INSERT INTO `users` (`id`, `name`) VALUES
+(1, 'Jan Kowalski'),
+(2, 'Marta Nowak'),
+(3, 'Johnny Cage');
 
 --
 -- Ograniczenia dla zrzutów tabel
