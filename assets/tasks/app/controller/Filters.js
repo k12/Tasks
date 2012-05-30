@@ -46,6 +46,14 @@ Ext.define('Tasks.controller.Filters', {
         tasksStore.clearFilter();
 
         switch (record.get('filter').toLowerCase()) {
+            case 'all':
+                tasksStore.filter({
+                    filterFn: function(item) {
+                        var state = item.get('state');
+                            return (state != 'completed');
+                    }
+                });
+                break;
             case 'not started':
                 tasksStore.filter('state', 'not started');
                 break;
