@@ -3,5 +3,6 @@ Ext.define('Tasks.store.Tasks', {
 
     model: 'Tasks.model.Task',
 
+    sorters: 'dueDate',
     autoLoad: true
 });
