@@ -36,7 +36,7 @@ Ext.define('Tasks.controller.Filters', {
     },
 
     onAfterRender: function(filtersGrid) {
-        filtersGrid.getSelectionModel().select(8); //TODO: fix that static index!
+        filtersGrid.getSelectionModel().select(0); //TODO: fix that static index!
     },
 
     filterTasksGrid: function(rowModel, record, index, eOpts) {
