@@ -29,6 +29,10 @@ Ext.define('Tasks.controller.Tasks', {
             selector: 'tasksGrid'
         },
         {
+            ref: 'filtersGrid',
+            selector: 'filtersGrid'
+        },
+        {
             ref: 'simpleCreateForm',
             selector: 'simpleCreateForm'
         },
@@ -295,6 +299,8 @@ Ext.define('Tasks.controller.Tasks', {
             task.save({
                 success: function(task, operation) {
                     me.getTasksStore().insert(0, task);
+
+                    me.getFiltersGrid().getSelectionModel().select(0); //TODO: fix that static index! (select All filter)
 
                     titleField.reset();
                     titleField.focus();
