@@ -7,7 +7,7 @@ Ext.define('Tasks.store.Filters', {
     autoLoad: true,
 
     data : [
-        {filter: 'All',            type: 'Others'},
+        {filter: 'All',            type: 'Active'},
         {filter: 'Without',        type: 'Due Date'},
         {filter: 'Overdue',        type: 'Due Date'},
         {filter: 'Today',          type: 'Due Date'},
