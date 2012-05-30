@@ -13,12 +13,10 @@
  * @property string $completedAt
  * @property integer $assignedToId
  * @property integer $assignedById
- * @property integer $categoryId
  *
  * The followings are the available model relations:
  * @property Users $assignedTo
  * @property Users $assignedBy
- * @property Categories $category
  */
 class Tasks extends CActiveRecord
 {
@@ -38,14 +36,14 @@ class Tasks extends CActiveRecord
         // will receive user inputs.
         return array(
             array('title', 'required'),
-            array('assignedToId, assignedById, categoryId', 'numerical', 'integerOnly' => true),
+            array('assignedToId, assignedById', 'numerical', 'integerOnly' => true),
             array('title', 'length', 'max' => 255),
             array('priority', 'length', 'max' => 6),
             array('state', 'length', 'max' => 11),
             array('dueDate, note, completedAt', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, title, dueDate, priority, note, state, completedAt, assignedToId, assignedById, categoryId', 'safe', 'on' => 'search'),
+            array('id, title, dueDate, priority, note, state, completedAt, assignedToId, assignedById', 'safe', 'on' => 'search'),
         );
     }
 
@@ -56,7 +54,6 @@ class Tasks extends CActiveRecord
         return array(
             'assignedTo' => array(self::BELONGS_TO, 'Users', 'assignedToId'),
             'assignedBy' => array(self::BELONGS_TO, 'Users', 'assignedById'),
-            'category' => array(self::BELONGS_TO, 'Categories', 'categoryId'),
         );
     }
 
@@ -72,7 +69,6 @@ class Tasks extends CActiveRecord
             'completedAt' => 'Completed At',
             'assignedToId' => 'Assigned To',
             'assignedById' => 'Assigned By',
-            'categoryId' => 'Category',
         );
     }
 
@@ -92,7 +88,6 @@ class Tasks extends CActiveRecord
         $criteria->compare('completedAt', $this->completedAt, true);
         $criteria->compare('assignedToId', $this->assignedToId);
         $criteria->compare('assignedById', $this->assignedById);
-        $criteria->compare('categoryId', $this->categoryId);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

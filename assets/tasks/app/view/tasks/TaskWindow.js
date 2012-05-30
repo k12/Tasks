@@ -41,8 +41,7 @@ Ext.define('Tasks.view.tasks.TaskWindow', {
                     anchor: '100%',
                     margin: '0 0 10',
                     items: [
-                        this.buildPriorityCombo(),
-                        this.buildCategoriesCombo()
+                        this.buildPriorityCombo()
                     ]
                 },
                 this.buildNoteEditor()
@@ -110,20 +109,6 @@ Ext.define('Tasks.view.tasks.TaskWindow', {
             width: 185,
             margin: '0 15 0 0',
             store: ['none', 'low', 'normal', 'high']
-        }
-    },
-
-    buildCategoriesCombo: function() {
-        return {
-            xtype: 'combobox',
-            name: 'categoryId',
-            fieldLabel: 'Category',
-            labelWidth: 60,
-            flex: 1,
-            displayField: 'category',
-            valueField: 'id',
-            value: 'hui',
-            store: Ext.create('Tasks.store.Categories')
         }
     },
 
