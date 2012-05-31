@@ -7,6 +7,7 @@ Ext.define('Tasks.view.tasks.Grid', {
     enableColumnResize: false,
 
     model: 'Task',
+
     store: 'Tasks',
 
     initComponent: function() {
@@ -14,6 +15,8 @@ Ext.define('Tasks.view.tasks.Grid', {
             items: [
                 this.buildStateColumn(),
                 this.buildTaskColumn(),
+                this.buildAssignedByColumn(),
+                this.buildAssignedToColumn(),
                 this.buildDueDateColumn(),
                 this.buildPriorityColumn(),
                 this.buildEditTaskColumn(),
@@ -70,6 +73,27 @@ Ext.define('Tasks.view.tasks.Grid', {
                 allowBlank: false
             }
         };
+    },
+
+    buildAssignedByColumn: function() {
+        return {
+            header: 'Assigned By',
+            dataIndex: 'assignedById',
+            renderer: function(value, meta, record, rowIndex, colIndex, store, view) {
+                return record.getAssignedBy().get('name');
+            }
+        }
+    },
+
+    buildAssignedToColumn: function() {
+        return {
+            header: 'Assigned To',
+            dataIndex: 'assignedToId',
+            hidden: true,
+            renderer: function(value, meta, record, rowIndex, colIndex, store, view) {
+                return record.getAssignedTo().get('name');
+            }
+        }
     },
 
     buildDueDateColumn: function() {
