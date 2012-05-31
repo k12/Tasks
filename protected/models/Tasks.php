@@ -15,6 +15,7 @@
  * @property integer $assignedById
  *
  * The followings are the available model relations:
+ * @property Users $createdBy
  * @property Users $assignedTo
  * @property Users $assignedBy
  */
@@ -36,14 +37,14 @@ class Tasks extends CActiveRecord
         // will receive user inputs.
         return array(
             array('title', 'required'),
-            array('assignedToId, assignedById', 'numerical', 'integerOnly' => true),
+            array('createdById, assignedToId, assignedById', 'numerical', 'integerOnly' => true),
             array('title', 'length', 'max' => 255),
             array('priority', 'length', 'max' => 6),
             array('state', 'length', 'max' => 11),
             array('dueDate, note, completedAt', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, title, dueDate, priority, note, state, completedAt, assignedToId, assignedById', 'safe', 'on' => 'search'),
+            array('id, title, dueDate, priority, note, state, completedAt, createdById, assignedToId, assignedById', 'safe', 'on' => 'search'),
         );
     }
 
@@ -52,6 +53,7 @@ class Tasks extends CActiveRecord
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
+            'createdBy' => array(self::BELONGS_TO, 'Users', 'createdById'),
             'assignedTo' => array(self::BELONGS_TO, 'Users', 'assignedToId'),
             'assignedBy' => array(self::BELONGS_TO, 'Users', 'assignedById'),
         );
@@ -67,6 +69,7 @@ class Tasks extends CActiveRecord
             'note' => 'Note',
             'state' => 'State',
             'completedAt' => 'Completed At',
+            'createdById' => 'Created By',
             'assignedToId' => 'Assigned To',
             'assignedById' => 'Assigned By',
         );
@@ -86,6 +89,7 @@ class Tasks extends CActiveRecord
         $criteria->compare('note', $this->note, true);
         $criteria->compare('state', $this->state, true);
         $criteria->compare('completedAt', $this->completedAt, true);
+        $criteria->compare('createdById', $this->createdById);
         $criteria->compare('assignedToId', $this->assignedToId);
         $criteria->compare('assignedById', $this->assignedById);
 

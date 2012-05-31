@@ -9,11 +9,13 @@ Ext.define('Tasks.model.Task', {
         {name: 'note',          type: 'string'},
         {name: 'state',         type: 'string',     defaultValue: 'not started'},
         {name: 'completedAt',   type: 'date',       dateFormat: 'Y-m-d'},
+        {name: 'createdById',   type: 'int',        defaultValue: 1}, //default value for simulating logged user
         {name: 'assignedToId',  type: 'int',        defaultValue: 1}, //default value for simulating logged user
         {name: 'assignedById',  type: 'int',        defaultValue: 1}  //default value for simulating logged user
     ],
 
     associations: [
+        { type: 'belongsTo', model: 'Tasks.model.User', primaryKey: 'id', foreignKey: 'createdById',  getterName: 'getCreatedBy',  setterName: 'setCreatedBy',  instanceName: 'createdBy' },
         { type: 'belongsTo', model: 'Tasks.model.User', primaryKey: 'id', foreignKey: 'assignedToId', getterName: 'getAssignedTo', setterName: 'setAssignedTo', instanceName: 'assignedTo' },
         { type: 'belongsTo', model: 'Tasks.model.User', primaryKey: 'id', foreignKey: 'assignedById', getterName: 'getAssignedBy', setterName: 'setAssignedBy', instanceName: 'assignedBy' }
     ],
