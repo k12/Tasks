@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas wygenerowania: 30 May 2012, 21:14
+-- Czas wygenerowania: 31 May 2012, 19:58
 -- Wersja serwera: 5.5.16
 -- Wersja PHP: 5.3.8
 
@@ -34,28 +34,30 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `note` text,
   `state` enum('not started','in progress','completed') NOT NULL DEFAULT 'not started',
   `completedAt` date DEFAULT NULL,
+  `createdById` int(11) NOT NULL,
   `assignedToId` int(11) DEFAULT NULL,
   `assignedById` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `assignedToId` (`assignedToId`),
-  KEY `assignedById` (`assignedById`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
+  KEY `assignedById` (`assignedById`),
+  KEY `createdById` (`createdById`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
 
 --
 -- Zrzut danych tabeli `tasks`
 --
 
-INSERT INTO `tasks` (`id`, `title`, `dueDate`, `priority`, `note`, `state`, `completedAt`, `assignedToId`, `assignedById`) VALUES
-(40, 'Task 01', '2012-05-30', 'none', '', 'completed', '2012-05-30', 1, 1),
-(41, 'Task 02', '2012-05-27', 'none', '', 'completed', '2012-05-30', 1, 1),
-(42, 'Task 03', NULL, 'low', '', 'not started', NULL, 1, 1),
-(43, 'Task 04', '2012-05-01', 'normal', '', 'not started', NULL, 1, 1),
-(44, 'Task 05', '2012-05-30', 'none', '', 'completed', '2012-05-30', 1, 1),
-(45, 'Task 06', NULL, 'low', 'Lorem ipsum', 'in progress', NULL, 1, 1),
-(46, 'Task 07', '2012-06-30', 'normal', '', 'not started', NULL, 1, 1),
-(47, 'Task 08', '2012-06-30', 'none', '', 'not started', NULL, 1, 1),
-(48, 'Task 09', '2012-05-30', 'high', '', 'in progress', NULL, 1, 1),
-(49, 'Task 10', '2012-05-29', 'none', '', 'in progress', NULL, 1, 1);
+INSERT INTO `tasks` (`id`, `title`, `dueDate`, `priority`, `note`, `state`, `completedAt`, `createdById`, `assignedToId`, `assignedById`) VALUES
+(40, 'Task 01', '2012-05-30', 'none', '', 'completed', '2012-05-30', 1, 1, 2),
+(41, 'Task 02', '2012-05-27', 'none', '', 'completed', '2012-05-30', 1, 1, 2),
+(42, 'Task 03', NULL, 'low', '', 'not started', NULL, 1, 1, 3),
+(43, 'Task 04', '2012-05-01', 'normal', '', 'not started', NULL, 1, 3, 3),
+(44, 'Task 05', '2012-05-30', 'none', '', 'in progress', NULL, 1, 1, 2),
+(45, 'Task 06', NULL, 'low', 'Lorem ipsum', 'in progress', NULL, 1, 1, 1),
+(46, 'Task 07', '2012-06-30', 'normal', '', 'not started', NULL, 1, 1, 1),
+(47, 'Task 08', '2012-06-30', 'none', '', 'completed', '2012-05-31', 1, 1, 1),
+(48, 'Task 09', '2012-05-30', 'high', '', 'completed', '2012-05-31', 1, 1, 1),
+(49, 'Task 10', '2012-05-29', 'none', '', 'completed', '2012-05-31', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -86,6 +88,7 @@ INSERT INTO `users` (`id`, `name`) VALUES
 -- Ograniczenia dla tabeli `tasks`
 --
 ALTER TABLE `tasks`
+  ADD CONSTRAINT `tasks_ibfk_3` FOREIGN KEY (`createdById`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`assignedToId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tasks_ibfk_2` FOREIGN KEY (`assignedById`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
