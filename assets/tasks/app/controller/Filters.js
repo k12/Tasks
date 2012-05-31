@@ -54,6 +54,26 @@ Ext.define('Tasks.controller.Filters', {
                     }
                 });
                 break;
+            case 'created by me':
+                tasksStore.filter({
+                    filterFn: function(item) {
+                        var creatorId = item.get('createdById'),
+                            state = item.get('state');
+
+                        return (creatorId == 1 && state != 'completed');
+                    }
+                });
+                break;
+            case 'assigned to me':
+                tasksStore.filter({
+                    filterFn: function(item) {
+                        var assignedToId = item.get('assignedToId'),
+                            state = item.get('state');
+
+                        return (assignedToId == 1 && state != 'completed');
+                    }
+                });
+                break;
             case 'not started':
                 tasksStore.filter('state', 'not started');
                 break;
@@ -149,6 +169,9 @@ Ext.define('Tasks.controller.Filters', {
                     }
                 });
                 break;
+
+            default:
+                return false;
         }
     }
 });
