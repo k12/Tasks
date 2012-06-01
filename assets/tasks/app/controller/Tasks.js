@@ -31,6 +31,10 @@ Ext.define('Tasks.controller.Tasks', {
             selector: 'filtersGrid'
         },
         {
+            ref: 'tasksTabPanel',
+            selector: 'tasksTabPanel'
+        },
+        {
             ref: 'simpleCreateForm',
             selector: 'simpleCreateForm'
         },
@@ -70,6 +74,9 @@ Ext.define('Tasks.controller.Tasks', {
                     onEditIconClick: this.onEditIconClick,
                     onDeleteIconClick: this.onDeleteIconClick,
                     onRecordEdit: this.update
+                },
+                'tasksTabPanel': {
+                    tabchange: this.onTabChange
                 },
                 'simpleCreateForm textfield': {
                     specialkey: this.onSpecialKey
@@ -144,6 +151,32 @@ Ext.define('Tasks.controller.Tasks', {
         else {
             editTaskBtn.enable();
             deleteTaskBtn.enable();
+        }
+    },
+
+    onTabChange: function(tabPanel, newCard, oldCard, eOpts) {
+        var tasksStore = this.getTasksStore();
+
+        switch(newCard.itemId)
+        {
+            case 'myTasksTab':
+                this.getFiltersGrid().getSelectionModel().select(0); //TODO: fix that static index!
+                this.getController('Tasks.controller.Filters').filterTasksGrid('All');
+                break;
+
+            case 'assignedTab':
+                tasksStore.clearFilter();
+
+                tasksStore.filter({
+                    filterFn: function(item) {
+                        var assignedBy = item.get('assignedById'),
+                            assignedTo = item.get('assignedToId'),
+                            state = item.get('state');
+
+                        return (assignedBy != 1 && assignedTo == 1 && state != 'completed');
+                    }
+                });
+                break;
         }
     },
 

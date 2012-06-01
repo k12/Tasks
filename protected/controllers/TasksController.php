@@ -46,7 +46,21 @@ class TasksController extends CController
             $respond['success'] = true;
 
             foreach($tasks as $task) {
-                $respond['tasks'][] = $task->attributes;
+                $user = Users::model()->findByPk($task['createdById']);
+                $createdBy = $user->attributes;
+
+                $user = Users::model()->findByPk($task['assignedById']);
+                $assignedBy = $user->attributes;
+
+                $user = Users::model()->findByPk($task['assignedToId']);
+                $assignedTo = $user->attributes;
+
+                $currentTask = $task->attributes;
+                $currentTask['createdBy'] = $createdBy;
+                $currentTask['assignedBy'] = $assignedBy;
+                $currentTask['assignedTo'] = $assignedTo;
+
+                $respond['tasks'][] = $currentTask;
             }
         }
         catch (Exception $e) {

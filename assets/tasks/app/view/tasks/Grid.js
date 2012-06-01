@@ -89,7 +89,7 @@ Ext.define('Tasks.view.tasks.Grid', {
         return {
             header: 'Assigned To',
             dataIndex: 'assignedToId',
-            hidden: true,
+            //hidden: true,
             renderer: function(value, meta, record, rowIndex, colIndex, store, view) {
                 return record.getAssignedTo().get('name');
             }
@@ -211,5 +211,5 @@ Ext.define('Tasks.view.tasks.Grid', {
         // clear the tasks store's filters and reapply them.
         store.clearFilter();
         store.filter(filters);
-    },
+    }
 });

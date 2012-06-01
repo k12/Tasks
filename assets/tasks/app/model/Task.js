@@ -15,9 +15,9 @@ Ext.define('Tasks.model.Task', {
     ],
 
     associations: [
-        { type: 'belongsTo', model: 'Tasks.model.User', primaryKey: 'id', foreignKey: 'createdById',  getterName: 'getCreatedBy',  setterName: 'setCreatedBy',  instanceName: 'createdBy' },
-        { type: 'belongsTo', model: 'Tasks.model.User', primaryKey: 'id', foreignKey: 'assignedToId', getterName: 'getAssignedTo', setterName: 'setAssignedTo', instanceName: 'assignedTo' },
-        { type: 'belongsTo', model: 'Tasks.model.User', primaryKey: 'id', foreignKey: 'assignedById', getterName: 'getAssignedBy', setterName: 'setAssignedBy', instanceName: 'assignedBy' }
+        { type: 'belongsTo', model: 'Tasks.model.User', primaryKey: 'id', foreignKey: 'createdById',  getterName: 'getCreatedBy',  setterName: 'setCreatedBy',  associationKey: 'createdBy'  },
+        { type: 'belongsTo', model: 'Tasks.model.User', primaryKey: 'id', foreignKey: 'assignedToId', getterName: 'getAssignedTo', setterName: 'setAssignedTo', associationKey: 'assignedTo' },
+        { type: 'belongsTo', model: 'Tasks.model.User', primaryKey: 'id', foreignKey: 'assignedById', getterName: 'getAssignedBy', setterName: 'setAssignedBy', associationKey: 'assignedBy' }
     ],
 
     proxy: {
