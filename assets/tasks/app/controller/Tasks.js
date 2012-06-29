@@ -105,7 +105,7 @@ Ext.define('Tasks.controller.Tasks', {
                 task.getAssignedTo({
                     success: function(user, operation) {
                         panel.setLoading(false);
-                        panel.updateDetails(task);  //all fields have been loaded - we can show details
+                        panel.updateDetails(task, this.getUsersStore());  //all fields have been loaded - we can show details
                     },
                     failure: function(user, operation) {
                         panel.setLoading(false);
@@ -366,6 +366,12 @@ Ext.define('Tasks.controller.Tasks', {
 
         task.save({
             success: function(task, operation) {
+                user = me.getUsersStore().getById(task.get('assignedToId'));
+
+               // task.setAssignedTo(user.get('id'));
+      //console.log(task);
+
+
                 me.showDetails(null, task);
                 me.getTasksGrid().refreshFilters();
             },

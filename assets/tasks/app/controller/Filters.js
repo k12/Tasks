@@ -28,7 +28,7 @@ Ext.define('Tasks.controller.Filters', {
         this.control(
             {
                 'filtersGrid': {
-                    select: this.filterTasksGrid,
+                    select: this.onFilterTasksGrid,
                     afterrender: this.onAfterRender
                 }
             }
@@ -39,13 +39,17 @@ Ext.define('Tasks.controller.Filters', {
         filtersGrid.getSelectionModel().select(0); //TODO: fix that static index!
     },
 
-    filterTasksGrid: function(rowModel, record, index, eOpts) {
+    onFilterTasksGrid: function(rowModel, record, index, eOpts) {
+        this.filterTasksGrid(record.get('filter'));
+    },
+
+    filterTasksGrid: function(filterName) {
         var tasksStore = this.getTasksStore(),
             now = Ext.Date.clearTime(new Date());
 
         tasksStore.clearFilter();
 
-        switch (record.get('filter').toLowerCase()) {
+        switch (filterName.toLowerCase()) {
             case 'all':
                 tasksStore.filter({
                     filterFn: function(item) {

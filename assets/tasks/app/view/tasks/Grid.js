@@ -86,12 +86,26 @@ Ext.define('Tasks.view.tasks.Grid', {
     },
 
     buildAssignedToColumn: function() {
+        var usersStore = Ext.create('Tasks.store.Users');
+
         return {
             header: 'Assigned To',
             dataIndex: 'assignedToId',
             //hidden: true,
+            editor: new Ext.form.field.ComboBox({
+                store: usersStore,
+                name: 'assignedToId',
+                displayField: 'name',
+                typeAhead: true,
+                triggerAction: 'all',
+                selectOnTab: true,
+                valueField: 'id'
+
+            }),
             renderer: function(value, meta, record, rowIndex, colIndex, store, view) {
-                return record.getAssignedTo().get('name');
+                var user = usersStore.getById(value);
+
+                return user ? user.get('name') : 'Unknown';
             }
         }
     },
@@ -179,9 +193,9 @@ Ext.define('Tasks.view.tasks.Grid', {
     },
 
     getStateColumnClass: function(v, metaData, record) {
-        var state = record.data['state'].toLowerCase().replace(' ', '-');
+       var state = record.data['state'].toLowerCase().replace(' ', '-');
 
-        return 'task-' + state + '-icon';
+       return 'task-' + state + '-icon';
     },
 
     getPriorityColumnClass: function(v, metaData, record) {

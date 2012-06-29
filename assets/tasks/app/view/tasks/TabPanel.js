@@ -12,6 +12,7 @@ Ext.define('Tasks.view.tasks.TabPanel', {
         return [
             {
                 title: 'My Tasks',
+                itemId: 'myTasksTab',
                 items: [
                     {
                         xtype: 'tasksGrid'
@@ -20,6 +21,7 @@ Ext.define('Tasks.view.tasks.TabPanel', {
             },
             {
                 title: 'Assigned',
+                itemId: 'assignedTab',
                 items: [
                     {
                         xtype: 'tasksGrid'

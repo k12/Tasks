@@ -25,13 +25,15 @@ Ext.define('Tasks.view.tasks.Details', {
         this.callParent();
     },
 
-    updateDetails: function(task) {
-        var tplData = Ext.clone(task.data);
+    updateDetails: function(task, usersStore) { //FIXIT: is usersStore parameter neccessary?
+        var tplData = Ext.clone(task.data),
+            assignedBy = usersStore.getById(task.get('assignedById')),
+            assignedTo = usersStore.getById(task.get('assignedToId'));
 
         tplData['dueDate'] = Ext.Date.format(task.get('dueDate'), 'Y-m-d');
         tplData['priorityClass'] = 'priority-'+task.get('priority');
-        tplData['assignedBy'] = task.getAssignedBy().get('name');
-        tplData['assignedTo'] = task.getAssignedTo().get('name');
+        tplData['assignedBy'] = assignedBy.get('name');
+        tplData['assignedTo'] = assignedTo.get('name');
         tplData['state'] = task.get('state');
         tplData['stateClass'] = 'state-'+task.get('state').replace(' ','-');
         tplData['completedAt'] = (task.get('completedAt') != null) ? '<b>Completed at:</b> '+Ext.Date.format(task.get('completedAt'), 'Y-m-d')+'<br/><br/>' : '<br/>';
