@@ -32,8 +32,8 @@ Ext.define('Tasks.view.tasks.Details', {
 
         tplData['dueDate'] = Ext.Date.format(task.get('dueDate'), 'Y-m-d');
         tplData['priorityClass'] = 'priority-'+task.get('priority');
-        tplData['assignedBy'] = assignedBy.get('name');
-        tplData['assignedTo'] = assignedTo.get('name');
+        tplData['assignedBy'] = assignedBy ? assignedBy.get('name') : 'Unknown';
+        tplData['assignedTo'] = assignedTo ? assignedTo.get('name') : 'Unknown';
         tplData['state'] = task.get('state');
         tplData['stateClass'] = 'state-'+task.get('state').replace(' ','-');
         tplData['completedAt'] = (task.get('completedAt') != null) ? '<b>Completed at:</b> '+Ext.Date.format(task.get('completedAt'), 'Y-m-d')+'<br/><br/>' : '<br/>';
